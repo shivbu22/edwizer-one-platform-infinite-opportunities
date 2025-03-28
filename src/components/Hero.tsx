@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Award, Lightbulb } from 'lucide-react';
+import HeroScene3D from './HeroScene3D';
 
 const Hero = () => {
   return (
@@ -28,39 +29,38 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="hidden md:block relative z-10">
-            <div className="relative">
-              <div className="absolute -top-6 -left-6 bg-edwizer-orange/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float">
-                <div className="flex items-center space-x-3">
-                  <BookOpen className="h-8 w-8 text-white" />
-                  <div>
-                    <p className="text-white font-medium">Career Counseling</p>
-                    <p className="text-white/80 text-sm">Find your perfect path</p>
-                  </div>
+          <div className="hidden md:block relative z-10 h-[450px]">
+            <HeroScene3D />
+            
+            {/* Floating cards with absolute positioning */}
+            <div className="absolute -top-6 -left-6 bg-edwizer-orange/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float z-20">
+              <div className="flex items-center space-x-3">
+                <BookOpen className="h-8 w-8 text-white" />
+                <div>
+                  <p className="text-white font-medium">Career Counseling</p>
+                  <p className="text-white/80 text-sm">Find your perfect path</p>
                 </div>
               </div>
-              
-              <div className="absolute top-1/3 -right-8 bg-edwizer-teal/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float" style={{ animationDelay: '1s' }}>
-                <div className="flex items-center space-x-3">
-                  <Award className="h-8 w-8 text-white" />
-                  <div>
-                    <p className="text-white font-medium">Admissions</p>
-                    <p className="text-white/80 text-sm">Top institutions support</p>
-                  </div>
+            </div>
+            
+            <div className="absolute top-1/3 -right-8 bg-edwizer-teal/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float z-20" style={{ animationDelay: '1s' }}>
+              <div className="flex items-center space-x-3">
+                <Award className="h-8 w-8 text-white" />
+                <div>
+                  <p className="text-white font-medium">Admissions</p>
+                  <p className="text-white/80 text-sm">Top institutions support</p>
                 </div>
               </div>
-              
-              <div className="absolute -bottom-6 left-12 bg-edwizer-yellow/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float" style={{ animationDelay: '2s' }}>
-                <div className="flex items-center space-x-3">
-                  <Lightbulb className="h-8 w-8 text-edwizer-blue" />
-                  <div>
-                    <p className="text-edwizer-blue font-medium">Skill Development</p>
-                    <p className="text-edwizer-blue/80 text-sm">Industry-ready training</p>
-                  </div>
+            </div>
+            
+            <div className="absolute -bottom-6 left-12 bg-edwizer-yellow/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float z-20" style={{ animationDelay: '2s' }}>
+              <div className="flex items-center space-x-3">
+                <Lightbulb className="h-8 w-8 text-edwizer-blue" />
+                <div>
+                  <p className="text-edwizer-blue font-medium">Skill Development</p>
+                  <p className="text-edwizer-blue/80 text-sm">Industry-ready training</p>
                 </div>
               </div>
-              
-              <div className="bg-white/30 backdrop-blur-md p-8 rounded-2xl h-80 w-full"></div>
             </div>
           </div>
         </div>
