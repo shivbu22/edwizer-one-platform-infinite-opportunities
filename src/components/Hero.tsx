@@ -1,0 +1,92 @@
+
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, BookOpen, Award, Lightbulb } from 'lucide-react';
+
+const Hero = () => {
+  return (
+    <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-hero-pattern text-white relative overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6 z-10">
+            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+              <p className="text-white font-medium text-sm">Your 360° Career & Education Companion</p>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              Turning <span className="text-edwizer-yellow">aspirations</span> into <span className="text-edwizer-yellow">reality</span>
+            </h1>
+            <p className="text-lg md:text-xl opacity-90">
+              Expert guidance for every step of your academic and career journey, from choosing the right path to securing admissions and beyond.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button className="bg-white text-edwizer-blue hover:bg-edwizer-yellow hover:text-edwizer-blue">
+                Explore Services <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline" className="border-white text-white hover:bg-white/20">
+                Book Consultation
+              </Button>
+            </div>
+          </div>
+          
+          <div className="hidden md:block relative z-10">
+            <div className="relative">
+              <div className="absolute -top-6 -left-6 bg-edwizer-orange/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float">
+                <div className="flex items-center space-x-3">
+                  <BookOpen className="h-8 w-8 text-white" />
+                  <div>
+                    <p className="text-white font-medium">Career Counseling</p>
+                    <p className="text-white/80 text-sm">Find your perfect path</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="absolute top-1/3 -right-8 bg-edwizer-teal/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float" style={{ animationDelay: '1s' }}>
+                <div className="flex items-center space-x-3">
+                  <Award className="h-8 w-8 text-white" />
+                  <div>
+                    <p className="text-white font-medium">Admissions</p>
+                    <p className="text-white/80 text-sm">Top institutions support</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="absolute -bottom-6 left-12 bg-edwizer-yellow/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float" style={{ animationDelay: '2s' }}>
+                <div className="flex items-center space-x-3">
+                  <Lightbulb className="h-8 w-8 text-edwizer-blue" />
+                  <div>
+                    <p className="text-edwizer-blue font-medium">Skill Development</p>
+                    <p className="text-edwizer-blue/80 text-sm">Industry-ready training</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-white/30 backdrop-blur-md p-8 rounded-2xl h-80 w-full"></div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Stats Section */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+          <div className="text-center">
+            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">10k+</p>
+            <p className="text-white/90 mt-1">Students Guided</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">98%</p>
+            <p className="text-white/90 mt-1">Success Rate</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">200+</p>
+            <p className="text-white/90 mt-1">Partner Institutions</p>
+          </div>
+          <div className="text-center">
+            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">24/7</p>
+            <p className="text-white/90 mt-1">Support Available</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

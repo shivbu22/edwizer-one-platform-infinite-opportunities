@@ -1,0 +1,167 @@
+
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { MailCheck } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
+
+const ContactForm = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormData(prev => ({ ...prev, service: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitted(true);
+      toast({
+        title: "Consultation Request Received",
+        description: "We'll contact you within 24 hours to schedule your session.",
+      });
+    }, 1500);
+  };
+
+  return (
+    <section id="contact" className="py-16 bg-gradient-to-b from-edwizer-light/30 to-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">Book Your Free Consultation</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Take the first step towards a brighter future. Our experts are ready to help you navigate your educational and career journey.
+          </p>
+        </div>
+        
+        <div className="max-w-3xl mx-auto">
+          <Card className="border-edwizer-green/30 shadow-lg">
+            <CardContent className="p-6 md:p-8">
+              {!submitted ? (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Full Name</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email Address</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="your.email@example.com"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Phone Number</Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        placeholder="Your phone number"
+                        required
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="service">Service Interested In</Label>
+                      <Select onValueChange={handleSelectChange} value={formData.service}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a service" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="career-counseling">Career Counseling</SelectItem>
+                          <SelectItem value="admission-assistance">Admission Assistance</SelectItem>
+                          <SelectItem value="scholarship-guidance">Scholarship Guidance</SelectItem>
+                          <SelectItem value="skill-development">Skill Development</SelectItem>
+                          <SelectItem value="exam-coaching">Exam Coaching</SelectItem>
+                          <SelectItem value="mental-wellbeing">Mental Wellbeing Support</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Your Message (Optional)</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="Tell us more about what you're looking for..."
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    className="w-full py-6 text-lg bg-gradient-to-r from-edwizer-blue to-edwizer-teal hover:from-edwizer-teal hover:to-edwizer-blue text-white"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Book Your Free Consultation"}
+                  </Button>
+                </form>
+              ) : (
+                <div className="text-center py-8">
+                  <div className="flex justify-center mb-4">
+                    <div className="rounded-full bg-edwizer-green/20 p-4">
+                      <MailCheck className="h-12 w-12 text-edwizer-green" />
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Thank You for Reaching Out!</h3>
+                  <p className="text-gray-600 max-w-md mx-auto mb-6">
+                    We've received your consultation request and will contact you within 24 hours to schedule your session.
+                  </p>
+                  <Button 
+                    onClick={() => setSubmitted(false)} 
+                    variant="outline" 
+                    className="border-edwizer-blue text-edwizer-blue"
+                  >
+                    Submit Another Request
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactForm;
