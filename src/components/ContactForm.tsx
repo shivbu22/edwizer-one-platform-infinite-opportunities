@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { MailCheck } from 'lucide-react';
+import { MailCheck, Mail, Phone } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
 const ContactForm = () => {
@@ -53,6 +53,16 @@ const ContactForm = () => {
           <p className="text-gray-600 max-w-2xl mx-auto">
             Take the first step towards a brighter future. Our experts are ready to help you navigate your educational and career journey.
           </p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
+            <a href="mailto:info@edwizer.in" className="flex items-center text-edwizer-blue hover:text-edwizer-teal transition-colors">
+              <Mail className="h-5 w-5 mr-2" />
+              <span>info@edwizer.in</span>
+            </a>
+            <a href="tel:+919911164696" className="flex items-center text-edwizer-blue hover:text-edwizer-teal transition-colors">
+              <Phone className="h-5 w-5 mr-2" />
+              <span>+91 9911164696</span>
+            </a>
+          </div>
         </div>
         
         <div className="max-w-3xl mx-auto">
