@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Award, Lightbulb } from 'lucide-react';
 import HeroScene3D from './HeroScene3D';
-
 const Hero = () => {
-  return (
-    <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-hero-pattern text-white relative overflow-hidden">
+  return <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-hero-pattern text-white relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 z-10">
@@ -23,7 +20,7 @@ const Hero = () => {
               <Button className="bg-white text-edwizer-blue hover:bg-edwizer-yellow hover:text-edwizer-blue">
                 Explore Services <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white/20">
+              <Button variant="outline" className="border-white text-white font-extrabold bg-teal-700 hover:bg-teal-600">
                 Book Consultation
               </Button>
             </div>
@@ -43,7 +40,9 @@ const Hero = () => {
               </div>
             </div>
             
-            <div className="absolute top-1/3 -right-8 bg-edwizer-teal/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float z-20" style={{ animationDelay: '1s' }}>
+            <div className="absolute top-1/3 -right-8 bg-edwizer-teal/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float z-20" style={{
+            animationDelay: '1s'
+          }}>
               <div className="flex items-center space-x-3">
                 <Award className="h-8 w-8 text-white" />
                 <div>
@@ -53,7 +52,9 @@ const Hero = () => {
               </div>
             </div>
             
-            <div className="absolute -bottom-6 left-12 bg-edwizer-yellow/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float z-20" style={{ animationDelay: '2s' }}>
+            <div className="absolute -bottom-6 left-12 bg-edwizer-yellow/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float z-20" style={{
+            animationDelay: '2s'
+          }}>
               <div className="flex items-center space-x-3">
                 <Lightbulb className="h-8 w-8 text-edwizer-blue" />
                 <div>
@@ -85,8 +86,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
