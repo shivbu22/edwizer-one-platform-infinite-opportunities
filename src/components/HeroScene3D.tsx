@@ -1,5 +1,5 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, useTexture, Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -7,17 +7,13 @@ import * as THREE from 'three';
 const GlobeModel = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
-  const [textureError, setTextureError] = useState(false);
   
   // Earth textures with error handling
   let earthTexture;
   try {
     earthTexture = useTexture('/earth-texture.jpg');
   } catch (error) {
-    if (!textureError) {
-      console.log('Earth texture not found, using fallback material');
-      setTextureError(true);
-    }
+    console.log('Earth texture not found, using fallback material');
   }
   
   // Rotation animation
@@ -35,7 +31,7 @@ const GlobeModel = () => {
       {/* Earth */}
       <mesh ref={meshRef}>
         <sphereGeometry args={[1.5, 64, 64]} />
-        {earthTexture && !textureError ? (
+        {earthTexture ? (
           <meshStandardMaterial 
             map={earthTexture} 
             metalness={0.1}
@@ -107,7 +103,8 @@ const Particles = () => {
   );
 };
 
-const HeroScene3D = () => {
+// Define the HeroScene3D as a function component
+const HeroScene3D: React.FC = () => {
   return (
     <div className="w-full h-full min-h-[400px]">
       <Canvas 
