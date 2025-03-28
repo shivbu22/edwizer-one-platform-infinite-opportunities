@@ -63,7 +63,7 @@ const Footer = () => {
               </li>
               <li className="flex">
                 <MapPin className="h-5 w-5 mr-3 text-edwizer-yellow" />
-                <span className="text-white/80">Tech Park, Bangalore, India 560001</span>
+                <span className="text-white/80">Knowledge Park II, Greater Noida, Uttar Pradesh 201306, India</span>
               </li>
             </ul>
           </div>
