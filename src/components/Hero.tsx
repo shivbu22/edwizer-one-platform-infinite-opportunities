@@ -8,7 +8,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 z-10">
             <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              <p className="text-white font-medium text-sm">Your 360° Career & Education Companion</p>
+              <p className="text-white font-medium text-lg">Your 360° Career &amp; Education Companion </p>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Turning <span className="text-edwizer-yellow">aspirations</span> into <span className="text-edwizer-yellow">reality</span>
