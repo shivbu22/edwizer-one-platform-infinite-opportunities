@@ -37,11 +37,14 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Configure EmailJS with your service ID, template ID, and public key
-      // These should be replaced with your actual EmailJS credentials
-      const serviceId = 'service_edwizer';
-      const templateId = 'template_edwizer';
-      const publicKey = 'your_public_key'; // This is a publishable key, safe to include in frontend code
+      // These values should be replaced with your actual EmailJS credentials
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_edwizer';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_edwizer';
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      
+      if (!publicKey) {
+        throw new Error('EmailJS public key is not configured');
+      }
       
       await emailjs.sendForm(
         serviceId,
