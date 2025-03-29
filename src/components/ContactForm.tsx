@@ -1,16 +1,18 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { MailCheck, Mail, Phone } from 'lucide-react';
+import { MailCheck, Mail, Phone, Loader2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -30,19 +32,39 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, service: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Configure EmailJS with your service ID, template ID, and public key
+      // These should be replaced with your actual EmailJS credentials
+      const serviceId = 'service_edwizer';
+      const templateId = 'template_edwizer';
+      const publicKey = 'your_public_key'; // This is a publishable key, safe to include in frontend code
+      
+      await emailjs.sendForm(
+        serviceId,
+        templateId,
+        formRef.current!,
+        publicKey
+      );
+      
       setIsSubmitting(false);
       setSubmitted(true);
       toast({
-        title: "Consultation Request Received",
-        description: "We'll contact you within 24 hours to schedule your session.",
+        title: "Consultation Request Sent",
+        description: "We've sent your request to info@edwizer.in. We'll contact you within 24 hours.",
       });
-    }, 1500);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setIsSubmitting(false);
+      toast({
+        title: "Failed to Send",
+        description: "There was an error sending your request. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -69,7 +91,7 @@ const ContactForm = () => {
           <Card className="border-edwizer-green/30 shadow-lg">
             <CardContent className="p-6 md:p-8">
               {!submitted ? (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name</Label>
@@ -110,7 +132,7 @@ const ContactForm = () => {
                     
                     <div className="space-y-2">
                       <Label htmlFor="service">Service Interested In</Label>
-                      <Select onValueChange={handleSelectChange} value={formData.service}>
+                      <Select onValueChange={handleSelectChange} value={formData.service} name="service">
                         <SelectTrigger>
                           <SelectValue placeholder="Select a service" />
                         </SelectTrigger>
@@ -143,8 +165,17 @@ const ContactForm = () => {
                     className="w-full py-6 text-lg bg-gradient-to-r from-edwizer-blue to-edwizer-teal hover:from-edwizer-teal hover:to-edwizer-blue text-white"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Submitting..." : "Book Your Free Consultation"}
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : "Book Your Free Consultation"}
                   </Button>
+                  
+                  <p className="text-xs text-center text-gray-500 mt-2">
+                    Your information will be sent to info@edwizer.in
+                  </p>
                 </form>
               ) : (
                 <div className="text-center py-8">
