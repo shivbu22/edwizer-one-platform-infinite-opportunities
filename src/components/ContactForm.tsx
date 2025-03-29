@@ -53,14 +53,14 @@ const ContactForm = () => {
           description: "Your request has been submitted successfully. You will also receive an email notification."
         });
       } else {
-        throw new Error(result.message);
+        throw new Error(result.message || "Submission unsuccessful.");
       }
     } catch (error) {
       console.error('Error sending data:', error);
       setIsSubmitting(false);
       toast({
         title: "Failed to Send",
-        description: "There was an error submitting your request. Please try again.",
+        description: "There was an error sending your request. Please try again or contact us directly at info@edwizer.in.",
         variant: "destructive",
       });
     }
