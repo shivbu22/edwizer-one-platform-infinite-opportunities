@@ -1,9 +1,7 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Award, Lightbulb } from 'lucide-react';
 import HeroScene3D from './HeroScene3D';
-
 const Hero = () => {
   return <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-hero-pattern text-white relative overflow-hidden">
       <div className="container mx-auto px-4">
@@ -22,7 +20,7 @@ const Hero = () => {
               <Button className="bg-white text-edwizer-blue hover:bg-edwizer-yellow hover:text-edwizer-blue">
                 Explore Services <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" className="border-white text-white font-extrabold bg-teal-700 hover:bg-teal-600">
+              <Button variant="outline" className="<button onclick=\"window.location.href='https://wa.link/s43dxd'\" class=\"border-white text-white font-extrabold bg-teal-700 hover:bg-teal-600\">\n    Book Consultation\n</button>">
                 Book Consultation
               </Button>
             </div>
@@ -94,5 +92,4 @@ const Hero = () => {
       </div>
     </section>;
 };
-
 export default Hero;
