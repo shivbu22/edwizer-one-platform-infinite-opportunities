@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { MailCheck, Mail, Phone, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
 const ContactForm = () => {
@@ -42,10 +42,15 @@ const ContactForm = () => {
         },
         body: JSON.stringify(formData)
       });
-      
+
+      // Check if the response is successful
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
       const result = await response.json();
       setIsSubmitting(false);
-      
+
       if (result.status === "success") {
         setSubmitted(true);
         toast({
