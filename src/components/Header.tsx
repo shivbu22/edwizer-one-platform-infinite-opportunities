@@ -1,16 +1,23 @@
+
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  
   return <header className="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <a href="/" className="flex items-center">
-            <span className="font-bold gradient-text text-4xl">Edwizer </span>
+            <img 
+              src="/lovable-uploads/7bcc9eb4-5184-4742-a4fa-f04a356fdc0c.png" 
+              alt="Edwizer Logo" 
+              className="h-14 mr-2"
+            />
           </a>
         </div>
 
@@ -53,4 +60,5 @@ const Header = () => {
         </div>}
     </header>;
 };
+
 export default Header;

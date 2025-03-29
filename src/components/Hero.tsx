@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Award, Lightbulb } from 'lucide-react';
 import HeroScene3D from './HeroScene3D';
+
 const Hero = () => {
   return <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-hero-pattern text-white relative overflow-hidden">
       <div className="container mx-auto px-4">
@@ -23,6 +25,10 @@ const Hero = () => {
               <Button variant="outline" className="border-white text-white font-extrabold bg-teal-700 hover:bg-teal-600">
                 Book Consultation
               </Button>
+            </div>
+            
+            <div className="mt-4 py-2 px-3 bg-white/10 backdrop-blur-sm rounded-lg inline-block">
+              <p className="text-edwizer-yellow font-semibold">ONE PLATFORM. INFINITE OPPORTUNITIES</p>
             </div>
           </div>
           
@@ -88,4 +94,5 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 export default Hero;
