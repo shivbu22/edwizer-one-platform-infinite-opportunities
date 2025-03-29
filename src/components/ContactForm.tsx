@@ -38,7 +38,7 @@ const ContactForm = () => {
     
     try {
       // These values should be replaced with your actual EmailJS credentials
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_edwizer';
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ura10ma';
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_edwizer';
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
       
