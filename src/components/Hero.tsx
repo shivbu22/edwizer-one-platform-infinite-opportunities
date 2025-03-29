@@ -20,7 +20,11 @@ const Hero = () => {
               <Button className="bg-white text-edwizer-blue hover:bg-edwizer-yellow hover:text-edwizer-blue">
                 Explore Services <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" className="<button onclick=\"window.location.href='https://wa.link/s43dxd'\" class=\"border-white text-white font-extrabold bg-teal-700 hover:bg-teal-600\">\n    Book Consultation\n</button>">
+              <Button
+                variant="outline"
+                className="border-white text-white font-extrabold bg-teal-700 hover:bg-teal-600"
+                onClick={() => window.location.href = 'https://wa.link/s43dxd'}
+              >
                 Book Consultation
               </Button>
             </div>
