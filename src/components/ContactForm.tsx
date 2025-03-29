@@ -7,7 +7,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { MailCheck, Mail, Phone, Loader2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
-import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -36,34 +35,32 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // These values should be replaced with your actual EmailJS credentials
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ura10ma';
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_edwizer';
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'a0brwmPXIFDKosET_';
-      
-      if (!publicKey) {
-        throw new Error('EmailJS public key is not configured');
-      }
-      
-      await emailjs.sendForm(
-        serviceId,
-        templateId,
-        formRef.current!,
-        publicKey
-      );
-      
-      setIsSubmitting(false);
-      setSubmitted(true);
-      toast({
-        title: "Consultation Request Sent",
-        description: "We've sent your request to info@edwizer.in. We'll contact you within 24 hours.",
+      const response = await fetch("https://script.google.com/macros/s/AKfycbx8zEnXpM8zLz4aTclzqhAvIp7Wf3HN0I0pD-jdCMOF7CLbijmxvGz6XKmzB8BhjvI4/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
       });
+      
+      const result = await response.json();
+      setIsSubmitting(false);
+      
+      if (result.status === "success") {
+        setSubmitted(true);
+        toast({
+          title: "Consultation Request Sent",
+          description: "Your request has been submitted successfully. You will also receive an email notification."
+        });
+      } else {
+        throw new Error(result.message);
+      }
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error sending data:', error);
       setIsSubmitting(false);
       toast({
         title: "Failed to Send",
-        description: "There was an error sending your request. Please try again or contact us directly.",
+        description: "There was an error submitting your request. Please try again.",
         variant: "destructive",
       });
     }
@@ -77,16 +74,6 @@ const ContactForm = () => {
           <p className="text-gray-600 max-w-2xl mx-auto">
             Take the first step towards a brighter future. Our experts are ready to help you navigate your educational and career journey.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
-            <a href="mailto:info@edwizer.in" className="flex items-center text-edwizer-blue hover:text-edwizer-teal transition-colors">
-              <Mail className="h-5 w-5 mr-2" />
-              <span>info@edwizer.in</span>
-            </a>
-            <a href="tel:+919911164696" className="flex items-center text-edwizer-blue hover:text-edwizer-teal transition-colors">
-              <Phone className="h-5 w-5 mr-2" />
-              <span>+91 9911164696</span>
-            </a>
-          </div>
         </div>
         
         <div className="max-w-3xl mx-auto">
@@ -174,29 +161,13 @@ const ContactForm = () => {
                       </>
                     ) : "Book Your Free Consultation"}
                   </Button>
-                  
-                  <p className="text-xs text-center text-gray-500 mt-2">
-                    Your information will be sent to info@edwizer.in
-                  </p>
                 </form>
               ) : (
                 <div className="text-center py-8">
-                  <div className="flex justify-center mb-4">
-                    <div className="rounded-full bg-edwizer-green/20 p-4">
-                      <MailCheck className="h-12 w-12 text-edwizer-green" />
-                    </div>
-                  </div>
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">Thank You for Reaching Out!</h3>
                   <p className="text-gray-600 max-w-md mx-auto mb-6">
-                    We've received your consultation request and will contact you within 24 hours to schedule your session.
+                    We've received your consultation request and will contact you within 24 hours.
                   </p>
-                  <Button 
-                    onClick={() => setSubmitted(false)} 
-                    variant="outline" 
-                    className="border-edwizer-blue text-edwizer-blue"
-                  >
-                    Submit Another Request
-                  </Button>
                 </div>
               )}
             </CardContent>
