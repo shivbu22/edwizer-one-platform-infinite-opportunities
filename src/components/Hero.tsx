@@ -17,8 +17,10 @@ const Hero = () => {
               Expert guidance for every step of your academic and career journey, from choosing the right path to securing admissions and beyond.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button className="bg-white text-edwizer-blue hover:bg-edwizer-yellow hover:text-edwizer-blue"> onClick={() => window.location.href = 'https://wa.link/s43dxd'}
-                > Explore Services <ArrowRight className="ml-2 h-4 w-4" />
+              <Button className="bg-white text-edwizer-blue hover:bg-edwizer-yellow hover:text-edwizer-blue"
+                onClick={() => window.location.href = 'https://wa.link/s43dxd'}
+                > 
+                Explore Services <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button
                 variant="outline"
