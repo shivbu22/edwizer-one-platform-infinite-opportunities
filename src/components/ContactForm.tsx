@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -40,7 +39,7 @@ const ContactForm = () => {
       // These values should be replaced with your actual EmailJS credentials
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_ura10ma';
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_edwizer';
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'a0brwmPXIFDKosET_';
       
       if (!publicKey) {
         throw new Error('EmailJS public key is not configured');
