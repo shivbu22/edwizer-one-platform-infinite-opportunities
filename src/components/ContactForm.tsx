@@ -8,7 +8,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
-import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -62,27 +61,19 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Send email via EmailJS
-      const emailResponse = await emailjs.send(
-        "service_ura10ma", // Service ID
-        "template_n6j2v6g", // Template ID - You need to update this with your actual template ID
-        formData,
-        "a0brwmPXIFDKosET_" // Public Key
-      );
-      
-      // Save data to Google Sheets in parallel
+      // Save data to Google Sheets
       const sheetsResult = await saveToGoogleSheets(formData);
       
       setIsSubmitting(false);
       
-      if (emailResponse.status === 200) {
+      if (sheetsResult) {
         setSubmitted(true);
         toast({
           title: "Consultation Request Sent",
-          description: `Your request has been submitted successfully. ${sheetsResult ? "Your data has been saved to our records." : ""}`,
+          description: "Your request has been submitted successfully. Your data has been saved to our records.",
         });
       } else {
-        throw new Error("Email sending failed");
+        throw new Error("Failed to save data");
       }
     } catch (error) {
       console.error('Error sending data:', error);
