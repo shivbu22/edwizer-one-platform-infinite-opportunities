@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -30,35 +32,57 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, service: value }));
   };
 
+  // Function to save data to Google Sheets
+  const saveToGoogleSheets = async (data: typeof formData) => {
+    const GOOGLE_SHEET_WEBHOOK = "https://script.google.com/macros/s/AKfycbx8zEnXpM8zLz4aTclzqhAvIp7Wf3HN0I0pD-jdCMOF7CLbijmxvGz6XKmzB8BhjvI4/exec";
+    
+    try {
+      const response = await fetch(GOOGLE_SHEET_WEBHOOK, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      
+      if (!response.ok) {
+        console.error("Google Sheets error:", response.status);
+        return false;
+      }
+      
+      return true;
+    } catch (error) {
+      console.error("Error saving to Google Sheets:", error);
+      return false;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbx8zEnXpM8zLz4aTclzqhAvIp7Wf3HN0I0pD-jdCMOF7CLbijmxvGz6XKmzB8BhjvI4/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-
-      // Check if the response is successful
-      if (!response.ok) {
-        throw new Error(`Server error: ${response.status}`);
-      }
-
-      const result = await response.json();
+      // Send email via EmailJS
+      const emailResponse = await emailjs.send(
+        "service_ura10ma", // Service ID
+        "template_n6j2v6g", // Template ID - You need to update this with your actual template ID
+        formData,
+        "a0brwmPXIFDKosET_" // Public Key
+      );
+      
+      // Save data to Google Sheets in parallel
+      const sheetsResult = await saveToGoogleSheets(formData);
+      
       setIsSubmitting(false);
-
-      if (result.status === "success") {
+      
+      if (emailResponse.status === 200) {
         setSubmitted(true);
         toast({
           title: "Consultation Request Sent",
-          description: "Your request has been submitted successfully. You will also receive an email notification."
+          description: `Your request has been submitted successfully. ${sheetsResult ? "Your data has been saved to our records." : ""}`,
         });
       } else {
-        throw new Error(result.message || "Submission unsuccessful.");
+        throw new Error("Email sending failed");
       }
     } catch (error) {
       console.error('Error sending data:', error);
