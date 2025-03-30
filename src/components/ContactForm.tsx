@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -34,12 +35,21 @@ const ContactForm = () => {
     const GOOGLE_SHEET_WEBHOOK = "https://script.google.com/macros/s/AKfycbx8zEnXpM8zLz4aTclzqhAvIp7Wf3HN0I0pD-jdCMOF7CLbijmxvGz6XKmzB8BhjvI4/exec";
     
     try {
+      // Using URLSearchParams to format data for Google Scripts
+      const formDataForSheet = new URLSearchParams();
+      Object.entries(data).forEach(([key, value]) => {
+        formDataForSheet.append(key, value);
+      });
+      
+      // Add timestamp
+      formDataForSheet.append('timestamp', new Date().toISOString());
+
       const response = await fetch(GOOGLE_SHEET_WEBHOOK, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify(data)
+        body: formDataForSheet.toString()
       });
       
       if (!response.ok) {
@@ -65,6 +75,17 @@ const ContactForm = () => {
       
       if (sheetsResult) {
         setSubmitted(true);
+        if (formRef.current) {
+          formRef.current.reset();
+        }
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+        
         toast({
           title: "Consultation Request Sent",
           description: "Your request has been submitted successfully. Your data has been saved to our records.",
