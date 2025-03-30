@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { Compass, GraduationCap, PiggyBank, Brain, Award, Heart, HeartHandshake, Briefcase } from 'lucide-react';
+import StudentSupportPyramid from './StudentSupportPyramid';
+import PathwaysToEmpowerment from './PathwaysToEmpowerment';
 
 const serviceItems = [
   {
@@ -68,6 +70,10 @@ const Services = () => {
             </div>
           ))}
         </div>
+        
+        {/* Adding the new components */}
+        <StudentSupportPyramid />
+        <PathwaysToEmpowerment />
       </div>
     </section>
   );
