@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -31,7 +30,6 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, service: value }));
   };
 
-  // Function to save data to Google Sheets
   const saveToGoogleSheets = async (data: typeof formData) => {
     const GOOGLE_SHEET_WEBHOOK = "https://script.google.com/macros/s/AKfycbx8zEnXpM8zLz4aTclzqhAvIp7Wf3HN0I0pD-jdCMOF7CLbijmxvGz6XKmzB8BhjvI4/exec";
     
@@ -61,7 +59,6 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Save data to Google Sheets
       const sheetsResult = await saveToGoogleSheets(formData);
       
       setIsSubmitting(false);
