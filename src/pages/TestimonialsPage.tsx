@@ -81,25 +81,6 @@ const testimonials = [
   }
 ];
 
-const videoTestimonials = [
-  {
-    id: 1,
-    name: "Aditya Mehta",
-    role: "Data Science Student",
-    thumbnail: "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=2070&auto=format&fit=crop",
-    videoUrl: "#",
-    description: "Shares how Edwizer's career counseling helped him pivot from mechanical engineering to data science."
-  },
-  {
-    id: 2,
-    name: "Sanya Khan",
-    role: "IIM Graduate",
-    thumbnail: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop",
-    videoUrl: "#",
-    description: "Discusses how Edwizer's admission assistance helped her secure admission to a top IIM."
-  }
-];
-
 const statistics = [
   { value: "95%", label: "Student Satisfaction" },
   { value: "85%", label: "Admission Success Rate" },
