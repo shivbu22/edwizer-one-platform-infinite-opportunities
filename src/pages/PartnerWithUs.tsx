@@ -110,7 +110,7 @@ const PartnerWithUs = () => {
                 premium-grade collaboration opportunities that'll make your educational offerings run smoother 
                 than a Tesla on a freshly paved highway."
               </p>
-              <p className="text-right text-yellow-700 font-medium mt-2">— Vikram Mehra, Partnership Director</p>
+              <p className="text-right text-yellow-700 font-medium mt-2"></p>
             </div>
           </div>
           <div className="relative">
@@ -155,19 +155,19 @@ const PartnerWithUs = () => {
         <div className="bg-gradient-to-r from-edwizer-blue/10 to-edwizer-green/10 p-8 rounded-lg shadow-md mb-16">
           <h2 className="text-2xl font-bold text-edwizer-blue mb-6 text-center">Partner Success Stories</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {successStories.map((story, index) => (
+            {((story, index) => (
               <Card key={index} className="border-none shadow-md">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 rounded-full bg-edwizer-blue flex items-center justify-center text-white font-bold text-lg mr-3">
-                      {story.logoPlaceholder}
+                      {}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-edwizer-blue">{story.name}</h3>
-                      <p className="text-xs text-gray-500">{story.category}</p>
+                      <h3 className="font-semibold text-edwizer-blue">{}</h3>
+                      <p className="text-xs text-gray-500">{}</p>
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm">{story.description}</p>
+                  <p className="text-gray-600 text-sm">{}</p>
                 </CardContent>
               </Card>
             ))}
