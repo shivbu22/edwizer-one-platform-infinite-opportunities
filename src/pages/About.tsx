@@ -14,7 +14,7 @@ const About = () => {
       bio: "Former university professor with 15+ years of experience in educational leadership and curriculum development."
     },
     {
-      name: "Jatin Dwivedi",
+      name: "Mr. Jatin Dwivedi",
       role: "Career Counseling Head",
       image: "//##",
       bio: "Certified career counselor with expertise in guiding students through academic and professional decisions."
@@ -26,7 +26,7 @@ const About = () => {
       bio: "Licensed psychologist passionate about supporting students' mental health and emotional development."
     },
     {
-      name: "Gangesh Jha",
+      name: "Mr. Gangesh Jha",
       role: "Admissions Specialist",
       image: "//##",
       bio: "Former admissions officer with extensive knowledge of university application processes and requirements."
