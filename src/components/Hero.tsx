@@ -23,14 +23,14 @@ const Hero = () => {
             </p>
             <div className="flex flex-wrap gap-4">
               <Button className="bg-white text-edwizer-blue hover:bg-edwizer-yellow hover:text-edwizer-blue"
-                onClick={() => window.location.href = 'https://wa.link/2zhz54'}
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 > 
                 Explore Services <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button
                 variant="outline"
                 className="border-white text-white font-extrabold bg-teal-700 hover:bg-teal-600"
-                onClick={() => window.location.href = 'https://wa.link/s43dxd'}
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Book Consultation
               </Button>
@@ -85,7 +85,7 @@ const Hero = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 bg-white/10 backdrop-blur-sm p-6 rounded-xl">
           <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">10k+</p>
+            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">500+</p>
             <p className="text-white/90 mt-1">Students Guided</p>
           </div>
           <div className="text-center">
@@ -93,7 +93,7 @@ const Hero = () => {
             <p className="text-white/90 mt-1">Success Rate</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">200+</p>
+            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">120+</p>
             <p className="text-white/90 mt-1">Partner Institutions</p>
           </div>
           <div className="text-center">

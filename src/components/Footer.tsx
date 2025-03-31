@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
-import { X } from 'lucide-react'; // Importing the X icon for Twitter
+import { X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -11,7 +12,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center mb-4">
               <img 
-                src="/lovable-uploads/7bcc9eb4-5184-4742-a4fa-f04a356fdc0c.png" 
+                src="/lovable-uploads/70fb3ae3-9d22-4880-8f29-cc1504eb83bb.png" 
                 alt="Edwizer Logo" 
                 className="h-20 bg-white p-2 rounded-lg"
               />
@@ -38,7 +39,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-white/80 hover:text-edwizer-yellow transition-colors">About Us</a></li>
+              <li><Link to="/about" className="text-white/80 hover:text-edwizer-yellow transition-colors">About Us</Link></li>
               <li><a href="#services" className="text-white/80 hover:text-edwizer-yellow transition-colors">Our Services</a></li>
               <li><a href="#testimonials" className="text-white/80 hover:text-edwizer-yellow transition-colors">Testimonials</a></li>
               <li><a href="#" className="text-white/80 hover:text-edwizer-yellow transition-colors">Resources</a></li>
@@ -79,9 +80,9 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/70 text-sm">© 2024 Edwizer. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <a href="#" className="text-white/70 text-sm hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="text-white/70 text-sm hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="text-white/70 text-sm hover:text-white transition-colors">Cookie Policy</a>
+            <Link to="/privacy-policy" className="text-white/70 text-sm hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="text-white/70 text-sm hover:text-white transition-colors">Terms of Service</Link>
+            <Link to="/cookie-policy" className="text-white/70 text-sm hover:text-white transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

@@ -15,14 +15,6 @@ const testimonials = [
     rating: 5
   },
   {
-    id: 2,
-    name: "Rahul Verma",
-    role: "Medical Student",
-    image: "https://images.unsplash.com/photo-1591084728795-1149f32d9866?q=80&w=1964&auto=format&fit=crop",
-    quote: "The NEET coaching support I received from Edwizer was exceptional. They also helped me secure a scholarship that eased my financial burden significantly.",
-    rating: 5
-  },
-  {
     id: 3,
     name: "Ananya Patel",
     role: "MBA Aspirant",

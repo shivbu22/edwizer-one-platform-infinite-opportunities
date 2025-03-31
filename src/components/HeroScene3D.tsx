@@ -1,7 +1,7 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, useTexture, Environment } from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera, useTexture, Environment, Text3D, Float, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -66,6 +66,66 @@ const GlobeModel = () => {
           </mesh>
         );
       })}
+
+      {/* Add floating text */}
+      <Float
+        speed={1.5}
+        rotationIntensity={0.5}
+        floatIntensity={0.5}
+        position={[0, 2.5, 0]}
+      >
+        <Text3D
+          font="/fonts/helvetiker_regular.typeface.json"
+          size={isMobile ? 0.4 : 0.6}
+          height={0.1}
+          curveSegments={12}
+        >
+          EDWIZER
+          <meshPhysicalMaterial
+            color="#F9F871"
+            metalness={0.3}
+            roughness={0.2}
+            emissive="#E73E3E"
+            emissiveIntensity={0.2}
+          />
+        </Text3D>
+      </Float>
+
+      {/* Add animated graduation cap */}
+      <Float
+        speed={2}
+        rotationIntensity={0.6}
+        floatIntensity={0.6}
+        position={[isMobile ? -2 : -3, isMobile ? 2 : 3, 0]}
+      >
+        <mesh>
+          <coneGeometry args={[0.5, 0.5, 4]} />
+          <meshStandardMaterial color="#1A5F7A" />
+        </mesh>
+        <mesh position={[0, 0.3, 0]}>
+          <boxGeometry args={[1, 0.1, 1]} />
+          <meshStandardMaterial color="#1A5F7A" />
+        </mesh>
+      </Float>
+
+      {/* Add floating book */}
+      <Float
+        speed={1}
+        rotationIntensity={0.8}
+        floatIntensity={0.5}
+        position={[isMobile ? 2 : 3, isMobile ? -1.5 : -2, 0]}
+      >
+        <group>
+          <mesh>
+            <boxGeometry args={[0.8, 0.1, 0.6]} />
+            <meshStandardMaterial color="#E73E3E" />
+          </mesh>
+          <mesh position={[0, 0.1, 0]}>
+            <boxGeometry args={[0.7, 0.05, 0.5]} />
+            <meshStandardMaterial color="#FFFFFF" />
+          </mesh>
+        </group>
+      </Float>
     </group>
   );
 };
@@ -130,6 +190,7 @@ const HeroScene3D: React.FC = () => {
         
         <GlobeModel />
         <Particles />
+        <Stars radius={100} depth={50} count={isMobile ? 1000 : 5000} factor={4} saturation={0} fade speed={1} />
         
         <OrbitControls 
           enableZoom={false} 
