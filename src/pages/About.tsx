@@ -8,27 +8,27 @@ import WhatsAppConnect from '@/components/WhatsAppConnect';
 const About = () => {
   const teamMembers = [
     {
-      name: "Dr. Aisha Reddy",
-      role: "Chief Education Officer",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop",
+      name: "Mr. Deepanshu",
+      role: " Education Officer",
+      image: "//##",
       bio: "Former university professor with 15+ years of experience in educational leadership and curriculum development."
     },
     {
-      name: "Rajiv Khanna",
+      name: "Jatin Dwivedi",
       role: "Career Counseling Head",
-      image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=1974&auto=format&fit=crop",
+      image: "//##",
       bio: "Certified career counselor with expertise in guiding students through academic and professional decisions."
     },
     {
-      name: "Meera Gupta",
-      role: "Mental Wellbeing Director",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974&auto=format&fit=crop",
+      name: "Dr. Deepak Bharadwaj",
+      role: "Mental Wellbeing Specialist",
+      image: "//##",
       bio: "Licensed psychologist passionate about supporting students' mental health and emotional development."
     },
     {
-      name: "Vikram Choudhary",
+      name: "Gangesh Jha",
       role: "Admissions Specialist",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop",
+      image: "//##",
       bio: "Former admissions officer with extensive knowledge of university application processes and requirements."
     }
   ];
@@ -54,7 +54,7 @@ const About = () => {
               career discovery and admission assistance to skill development and mental wellbeing support.
             </p>
             <p className="text-gray-600 mb-4">
-              Today, Edwizer has guided over 10,000 students across India, helping them make informed decisions, 
+              Today, Edwizer has guided over 1000 students across India, helping them make informed decisions, 
               secure admissions to prestigious institutions, develop crucial skills, and navigate the challenges 
               of academic life with confidence.
             </p>
@@ -64,7 +64,7 @@ const About = () => {
                 what you're capable of, and finding the path that's uniquely yours. At Edwizer, we don't just 
                 guide students—we help them become the architects of their own future."
               </p>
-              <p className="text-right text-indigo-700 font-medium mt-2">— Dr. Sanjay Kumar, Founder & CEO</p>
+              <p className="text-right text-indigo-700 font-medium mt-2">— Founder & CEO</p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -108,14 +108,14 @@ const About = () => {
                   <Map className="h-6 w-6 mr-2 text-edwizer-orange" /> Our Mission
                 </h3>
                 <p className="text-gray-600 mb-3">
-                  To democratize access to quality education guidance and support, enabling every student 
+                  To democratize access to quality education, guidance and support, enabling every student 
                   to make informed decisions about their academic and career paths, regardless of their 
                   background or circumstances.
                 </p>
                 <p className="text-gray-600">
                   We aim to be the bridge that connects students to educational opportunities, 
                   providing them with the tools, resources, and guidance they need to navigate 
-                  the complex landscape of modern education and career development.
+                  The complex landscape of modern education and career development.
                 </p>
               </CardContent>
             </Card>
@@ -152,7 +152,7 @@ const About = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-6 text-center">Our Impact</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="bg-gradient-to-b from-edwizer-blue/10 to-white p-6 rounded-lg shadow-md">
-              <div className="text-4xl font-bold text-edwizer-blue mb-2">10,000+</div>
+              <div className="text-4xl font-bold text-edwizer-blue mb-2">1000+</div>
               <p className="text-gray-600">Students Guided</p>
             </div>
             <div className="bg-gradient-to-b from-edwizer-green/10 to-white p-6 rounded-lg shadow-md">
@@ -164,7 +164,7 @@ const About = () => {
               <p className="text-gray-600">Career Placements</p>
             </div>
             <div className="bg-gradient-to-b from-edwizer-teal/10 to-white p-6 rounded-lg shadow-md">
-              <div className="text-4xl font-bold text-edwizer-teal mb-2">₹10Cr+</div>
+              <div className="text-4xl font-bold text-edwizer-teal mb-2">₹10L+</div>
               <p className="text-gray-600">Scholarships Secured</p>
             </div>
           </div>
@@ -267,7 +267,7 @@ const About = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">Start Your Journey With Us</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Whether you're choosing a career path, applying to colleges, developing new skills, or facing 
-            academic challenges, Edwizer is here to support you every step of the way. Let us help you 
+            academic challenges, Edwizer is here to support you every step. Let us help you 
             navigate your educational journey and unlock your full potential.
           </p>
         </div>
