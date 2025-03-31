@@ -151,28 +151,7 @@ const PartnerWithUs = () => {
             </Card>
           ))}
         </div>
-        
-        <div className="bg-gradient-to-r from-edwizer-blue/10 to-edwizer-green/10 p-8 rounded-lg shadow-md mb-16">
-          <h2 className="text-2xl font-bold text-edwizer-blue mb-6 text-center">Partner Success Stories</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {((story, index) => (
-              <Card key={index} className="border-none shadow-md">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-edwizer-blue flex items-center justify-center text-white font-bold text-lg mr-3">
-                      {}
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-edwizer-blue">{}</h3>
-                      <p className="text-xs text-gray-500">{}</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 text-sm">{}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+      
         
         <div className="mb-16">
           <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-6 text-center">Partnership Process</h2>
