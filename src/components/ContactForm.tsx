@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -32,7 +31,7 @@ const ContactForm = () => {
   };
 
   const saveToGoogleSheets = async (data: typeof formData) => {
-    const GOOGLE_SHEET_WEBHOOK = "https://script.google.com/macros/s/AKfycbx8zEnXpM8zLz4aTclzqhAvIp7Wf3HN0I0pD-jdCMOF7CLbijmxvGz6XKmzB8BhjvI4/exec";
+    const GOOGLE_SHEET_WEBHOOK = "https://script.google.com/macros/s/AKfycbzYihGAaBMMj5OF0nedNa6ar2COKcwF5FuwemV5X8mxskuvpLwcS_gxDYaFhGmD5b56/exec";
     
     try {
       // Using URLSearchParams to format data for Google Scripts
