@@ -33,7 +33,7 @@ const CareerCounseling = () => {
                 The one where you'll actually show up and do the work even when no one's watching. 
                 Everything else is just details."
               </p>
-              <p className="text-right text-amber-700 font-medium mt-2">— Dr. Rakesh Sharma, Chief Career Advisor</p>
+              <p className="text-right text-amber-700 font-medium mt-2">— Mr. Shivam Yadav, Career Advisor</p>
             </div>
           </div>
           <div className="relative">
