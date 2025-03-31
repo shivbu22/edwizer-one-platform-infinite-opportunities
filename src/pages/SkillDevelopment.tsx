@@ -32,7 +32,7 @@ const SkillDevelopment = () => {
                 the grammar rules change every six months and everyone argues about whether semicolons 
                 are necessary. Don't worry though—we'll be your translators in this strange new world."
               </p>
-              <p className="text-right text-purple-700 font-medium mt-2">— Arjun Kapoor, Tech Skills Trainer</p>
+              <p className="text-right text-purple-700 font-medium mt-2">— Shiv, Tech Skills Trainer</p>
             </div>
           </div>
           <div className="relative">
