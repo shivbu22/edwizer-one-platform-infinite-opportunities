@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { X } from 'lucide-react'; // Importing the X icon for Twitter
 
 const Footer = () => {
   return (
@@ -19,16 +20,16 @@ const Footer = () => {
               Your 360° Career & Education Companion. We empower students to shape their careers and turn aspirations into reality.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-edwizer-yellow transition-colors" aria-label="Facebook">
+              <a href="https://www.facebook.com/edwizerofficial" target="_blank" rel="noopener noreferrer" className="hover:text-edwizer-yellow transition-colors" aria-label="Facebook">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="hover:text-edwizer-yellow transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
+              <a href="https://x.com/EdWizerOfficial" target="_blank" rel="noopener noreferrer" className="hover:text-edwizer-yellow transition-colors" aria-label="Twitter">
+                <X size={20} />
               </a>
-              <a href="#" className="hover:text-edwizer-yellow transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/edwizerofficial/" target="_blank" rel="noopener noreferrer" className="hover:text-edwizer-yellow transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="hover:text-edwizer-yellow transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/edwizer-social-media-638601353/" target="_blank" rel="noopener noreferrer" className="hover:text-edwizer-yellow transition-colors" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -76,7 +77,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-white/20 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white/70 text-sm">© {new Date().getFullYear()} Edwizer. All rights reserved.</p>
+          <p className="text-white/70 text-sm">© 2024 Edwizer. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <a href="#" className="text-white/70 text-sm hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="text-white/70 text-sm hover:text-white transition-colors">Terms of Service</a>
