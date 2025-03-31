@@ -42,7 +42,7 @@ const MentalWellbeing = () => {
                 about maintenance, updates, and occasional troubleshooting—because mental health isn't a 
                 luxury, it's part of your operating system."
               </p>
-              <p className="text-right text-red-700 font-medium mt-2">— Dr. Neha Patel, Lead Psychologist</p>
+              <p className="text-right text-red-700 font-medium mt-2">— Dr. Deepank Bharadwaj, Lead Psychologist</p>
             </div>
           </div>
         </div>
