@@ -1,7 +1,7 @@
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, useTexture, Environment, Text3D, Float, Stars } from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera, useTexture, Environment, Text, Float, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -67,28 +67,21 @@ const GlobeModel = () => {
         );
       })}
 
-      {/* Add floating text */}
+      {/* Add floating text - Using Text instead of Text3D to avoid font loading issues */}
       <Float
         speed={1.5}
         rotationIntensity={0.5}
         floatIntensity={0.5}
         position={[0, 2.5, 0]}
       >
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={isMobile ? 0.4 : 0.6}
-          height={0.1}
-          curveSegments={12}
+        <Text
+          fontSize={isMobile ? 0.4 : 0.6}
+          color="#F9F871"
+          anchorX="center"
+          anchorY="middle"
         >
           EDWIZER
-          <meshPhysicalMaterial
-            color="#F9F871"
-            metalness={0.3}
-            roughness={0.2}
-            emissive="#E73E3E"
-            emissiveIntensity={0.2}
-          />
-        </Text3D>
+        </Text>
       </Float>
 
       {/* Add animated graduation cap */}
@@ -175,34 +168,84 @@ const Particles = () => {
 // Define the HeroScene3D as a function component
 const HeroScene3D: React.FC = () => {
   const isMobile = useIsMobile();
+  // Use state to handle errors in the 3D scene
+  const [hasError, setHasError] = useState(false);
+
+  // Error boundary alternative for the 3D scene
+  const handleError = (error: any) => {
+    console.error("Error in 3D scene:", error);
+    setHasError(true);
+  };
+  
+  // If there's an error, show a fallback UI
+  if (hasError) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-edwizer-blue to-edwizer-teal rounded-lg">
+        <div className="text-center p-6">
+          <h3 className="text-xl font-bold text-white mb-2">Interactive 3D Experience</h3>
+          <p className="text-white/80">Educational journey visualization</p>
+        </div>
+      </div>
+    );
+  }
   
   return (
     <div className="w-full h-full">
-      <Canvas 
-        shadows 
-        className="bg-transparent"
-        camera={{ position: [0, 0, isMobile ? 6 : 5], fov: isMobile ? 50 : 45 }}
-        dpr={[1, isMobile ? 1.5 : 2]} // Lower pixel ratio on mobile for better performance
-      >
-        <PerspectiveCamera makeDefault position={[0, 0, isMobile ? 6 : 5]} />
-        <ambientLight intensity={0.5} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
-        
-        <GlobeModel />
-        <Particles />
-        <Stars radius={100} depth={50} count={isMobile ? 1000 : 5000} factor={4} saturation={0} fade speed={1} />
-        
-        <OrbitControls 
-          enableZoom={false} 
-          enablePan={false} 
-          rotateSpeed={0.5}
-          autoRotate
-          autoRotateSpeed={isMobile ? 0.3 : 0.5}
-        />
-        <Environment preset="city" />
-      </Canvas>
+      <ErrorBoundary fallback={
+        <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-edwizer-blue to-edwizer-teal rounded-lg">
+          <div className="text-center p-6">
+            <h3 className="text-xl font-bold text-white mb-2">Interactive 3D Experience</h3>
+            <p className="text-white/80">Educational journey visualization</p>
+          </div>
+        </div>
+      }>
+        <Canvas 
+          shadows 
+          className="bg-transparent"
+          camera={{ position: [0, 0, isMobile ? 6 : 5], fov: isMobile ? 50 : 45 }}
+          dpr={[1, isMobile ? 1.5 : 2]} // Lower pixel ratio on mobile for better performance
+          onError={handleError}
+        >
+          <PerspectiveCamera makeDefault position={[0, 0, isMobile ? 6 : 5]} />
+          <ambientLight intensity={0.5} />
+          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
+          
+          <GlobeModel />
+          <Particles />
+          <Stars radius={100} depth={50} count={isMobile ? 1000 : 5000} factor={4} saturation={0} fade speed={1} />
+          
+          <OrbitControls 
+            enableZoom={false} 
+            enablePan={false} 
+            rotateSpeed={0.5}
+            autoRotate
+            autoRotateSpeed={isMobile ? 0.3 : 0.5}
+          />
+          <Environment preset="city" />
+        </Canvas>
+      </ErrorBoundary>
     </div>
   );
 };
+
+// Simple ErrorBoundary component
+class ErrorBoundary extends React.Component<{children: React.ReactNode, fallback: React.ReactNode}> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: any, errorInfo: any) {
+    console.error("3D scene error:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
 
 export default HeroScene3D;
