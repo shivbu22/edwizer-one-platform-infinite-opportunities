@@ -40,21 +40,21 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><Link to="/about" className="text-white/80 hover:text-edwizer-yellow transition-colors">About Us</Link></li>
-              <li><a href="#services" className="text-white/80 hover:text-edwizer-yellow transition-colors">Our Services</a></li>
-              <li><a href="#testimonials" className="text-white/80 hover:text-edwizer-yellow transition-colors">Testimonials</a></li>
-              <li><a href="#" className="text-white/80 hover:text-edwizer-yellow transition-colors">Resources</a></li>
-              <li><a href="#" className="text-white/80 hover:text-edwizer-yellow transition-colors">Partner With Us</a></li>
+              <li><Link to="/services" className="text-white/80 hover:text-edwizer-yellow transition-colors">Our Services</Link></li>
+              <li><Link to="/testimonials" className="text-white/80 hover:text-edwizer-yellow transition-colors">Testimonials</Link></li>
+              <li><Link to="/resources" className="text-white/80 hover:text-edwizer-yellow transition-colors">Resources</Link></li>
+              <li><Link to="/partner-with-us" className="text-white/80 hover:text-edwizer-yellow transition-colors">Partner With Us</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-lg font-semibold mb-4">Our Services</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-white/80 hover:text-edwizer-yellow transition-colors">Career Counseling</a></li>
-              <li><a href="#" className="text-white/80 hover:text-edwizer-yellow transition-colors">Admission Assistance</a></li>
-              <li><a href="#" className="text-white/80 hover:text-edwizer-yellow transition-colors">Scholarship Guidance</a></li>
-              <li><a href="#" className="text-white/80 hover:text-edwizer-yellow transition-colors">Skill Development</a></li>
-              <li><a href="#" className="text-white/80 hover:text-edwizer-yellow transition-colors">Mental Wellbeing</a></li>
+              <li><Link to="/career-counseling" className="text-white/80 hover:text-edwizer-yellow transition-colors">Career Counseling</Link></li>
+              <li><Link to="/admission-assistance" className="text-white/80 hover:text-edwizer-yellow transition-colors">Admission Assistance</Link></li>
+              <li><Link to="/scholarship-guidance" className="text-white/80 hover:text-edwizer-yellow transition-colors">Scholarship Guidance</Link></li>
+              <li><Link to="/skill-development" className="text-white/80 hover:text-edwizer-yellow transition-colors">Skill Development</Link></li>
+              <li><Link to="/mental-wellbeing" className="text-white/80 hover:text-edwizer-yellow transition-colors">Mental Wellbeing</Link></li>
             </ul>
           </div>
           

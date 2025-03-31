@@ -1,214 +1,280 @@
 
 import React from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { motion } from 'framer-motion';
-import { Book, Target, Award, Users, Brain, BookOpen, GraduationCap, Clock } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import PageLayout from '@/components/PageLayout';
+import { Card, CardContent } from '@/components/ui/card';
+import { Award, BookOpen, Users, Map, Heart, Star, School, Briefcase } from 'lucide-react';
+import WhatsAppConnect from '@/components/WhatsAppConnect';
 
 const About = () => {
+  const teamMembers = [
+    {
+      name: "Dr. Aisha Reddy",
+      role: "Chief Education Officer",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop",
+      bio: "Former university professor with 15+ years of experience in educational leadership and curriculum development."
+    },
+    {
+      name: "Rajiv Khanna",
+      role: "Career Counseling Head",
+      image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=1974&auto=format&fit=crop",
+      bio: "Certified career counselor with expertise in guiding students through academic and professional decisions."
+    },
+    {
+      name: "Meera Gupta",
+      role: "Mental Wellbeing Director",
+      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974&auto=format&fit=crop",
+      bio: "Licensed psychologist passionate about supporting students' mental health and emotional development."
+    },
+    {
+      name: "Vikram Choudhary",
+      role: "Admissions Specialist",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop",
+      bio: "Former admissions officer with extensive knowledge of university application processes and requirements."
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow pt-24">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-b from-edwizer-blue to-edwizer-teal py-16 text-white">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <motion.h1 
-                  className="text-4xl md:text-5xl font-bold mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  About <span className="text-edwizer-yellow">Edwizer</span>
-                </motion.h1>
-                <motion.p 
-                  className="text-lg mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  Founded in 2024, Edwizer has emerged as a leading career and education guidance platform dedicated to empowering students with the knowledge and resources they need to make informed decisions about their future.
-                </motion.p>
-                <motion.div
-                  className="bg-white/10 backdrop-blur-sm p-4 rounded-lg mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                >
-                  <p className="italic text-edwizer-yellow font-medium">
-                    "Education is not just about getting a degree, it's about finding your path. And sometimes that path is covered in homework, anxiety, and ramen noodles. We're here to help with at least two of those problems."
-                  </p>
-                </motion.div>
-              </div>
-              <motion.div 
-                className="relative"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <img 
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
-                  alt="Students learning" 
-                  className="rounded-lg shadow-xl"
-                />
-                <div className="absolute -bottom-6 -right-6 bg-edwizer-yellow p-4 rounded-lg shadow-lg">
-                  <p className="text-edwizer-blue font-bold">500+ Students Guided</p>
-                  <p className="text-edwizer-blue/80 text-sm">98% Success Rate</p>
-                </div>
-              </motion.div>
+    <PageLayout 
+      title="About Edwizer" 
+      subtitle="Your 360° Career & Education Companion"
+    >
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">Our Story</h2>
+            <p className="text-gray-600 mb-4">
+              Edwizer was founded in 2024 with a simple yet powerful mission: to empower students to shape 
+              their academic journeys and turn their career aspirations into reality. We recognized that 
+              students often face complex decisions about their education and careers with limited guidance 
+              and support.
+            </p>
+            <p className="text-gray-600 mb-4">
+              Our founders, a team of educators, counselors, and industry professionals, came together to 
+              create a comprehensive platform that addresses every aspect of a student's educational journey—from 
+              career discovery and admission assistance to skill development and mental wellbeing support.
+            </p>
+            <p className="text-gray-600 mb-4">
+              Today, Edwizer has guided over 10,000 students across India, helping them make informed decisions, 
+              secure admissions to prestigious institutions, develop crucial skills, and navigate the challenges 
+              of academic life with confidence.
+            </p>
+            <div className="p-4 bg-indigo-50 border-l-4 border-indigo-500 rounded my-6">
+              <p className="italic text-indigo-800">
+                "Education is about more than just textbooks and exams. It's about discovering who you are, 
+                what you're capable of, and finding the path that's uniquely yours. At Edwizer, we don't just 
+                guide students—we help them become the architects of their own future."
+              </p>
+              <p className="text-right text-indigo-700 font-medium mt-2">— Dr. Sanjay Kumar, Founder & CEO</p>
             </div>
           </div>
-        </section>
-
-        {/* Our Mission */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">Our Mission</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                At Edwizer, we're on a mission to demystify education and career planning, making it accessible, personalized, and effective for every student.
-              </p>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1970&auto=format&fit=crop" 
+                alt="Career counseling session" 
+                className="rounded-lg shadow-md h-full w-full object-cover"
+              />
             </div>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" 
+                alt="Student working on laptop" 
+                className="rounded-lg shadow-md h-full w-full object-cover"
+              />
+            </div>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" 
+                alt="Group study session" 
+                className="rounded-lg shadow-md h-full w-full object-cover"
+              />
+            </div>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?q=80&w=2070&auto=format&fit=crop" 
+                alt="College campus" 
+                className="rounded-lg shadow-md h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="border-edwizer-green/20 hover:border-edwizer-green/50 transition-all duration-300 shadow-md hover:shadow-lg">
-                <CardHeader className="pb-2">
-                  <Target className="h-12 w-12 text-edwizer-blue mb-2" />
-                  <CardTitle>Personalized Guidance</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    We believe each student is unique, with their own strengths, interests, and aspirations. Our guidance is tailored to individual needs.
-                  </p>
+        <div className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-6 text-center">Our Mission & Values</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card className="border-edwizer-green/20 shadow-md">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold text-edwizer-blue mb-4 flex items-center">
+                  <Map className="h-6 w-6 mr-2 text-edwizer-orange" /> Our Mission
+                </h3>
+                <p className="text-gray-600 mb-3">
+                  To democratize access to quality education guidance and support, enabling every student 
+                  to make informed decisions about their academic and career paths, regardless of their 
+                  background or circumstances.
+                </p>
+                <p className="text-gray-600">
+                  We aim to be the bridge that connects students to educational opportunities, 
+                  providing them with the tools, resources, and guidance they need to navigate 
+                  the complex landscape of modern education and career development.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-edwizer-green/20 shadow-md">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-semibold text-edwizer-blue mb-4 flex items-center">
+                  <Heart className="h-6 w-6 mr-2 text-edwizer-orange" /> Our Values
+                </h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-start">
+                    <Star className="h-5 w-5 mr-2 text-edwizer-teal flex-shrink-0 mt-0.5" />
+                    <span><strong>Student-Centric Approach:</strong> We put students' needs and aspirations at the center of everything we do.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Star className="h-5 w-5 mr-2 text-edwizer-teal flex-shrink-0 mt-0.5" />
+                    <span><strong>Integrity & Transparency:</strong> We provide honest guidance based on facts and students' best interests.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Star className="h-5 w-5 mr-2 text-edwizer-teal flex-shrink-0 mt-0.5" />
+                    <span><strong>Inclusivity:</strong> We celebrate diversity and ensure our services are accessible to all students.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Star className="h-5 w-5 mr-2 text-edwizer-teal flex-shrink-0 mt-0.5" />
+                    <span><strong>Innovation:</strong> We continuously evolve our approaches to meet changing educational needs.</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        <div className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-6 text-center">Our Impact</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="bg-gradient-to-b from-edwizer-blue/10 to-white p-6 rounded-lg shadow-md">
+              <div className="text-4xl font-bold text-edwizer-blue mb-2">10,000+</div>
+              <p className="text-gray-600">Students Guided</p>
+            </div>
+            <div className="bg-gradient-to-b from-edwizer-green/10 to-white p-6 rounded-lg shadow-md">
+              <div className="text-4xl font-bold text-edwizer-green mb-2">120+</div>
+              <p className="text-gray-600">College Partnerships</p>
+            </div>
+            <div className="bg-gradient-to-b from-edwizer-orange/10 to-white p-6 rounded-lg shadow-md">
+              <div className="text-4xl font-bold text-edwizer-orange mb-2">500+</div>
+              <p className="text-gray-600">Career Placements</p>
+            </div>
+            <div className="bg-gradient-to-b from-edwizer-teal/10 to-white p-6 rounded-lg shadow-md">
+              <div className="text-4xl font-bold text-edwizer-teal mb-2">₹10Cr+</div>
+              <p className="text-gray-600">Scholarships Secured</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-6 text-center">Meet Our Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teamMembers.map((member, index) => (
+              <Card key={index} className="border-edwizer-green/20 hover:border-edwizer-green/50 transition-all duration-300 shadow-md overflow-hidden">
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+                <CardContent className="p-4">
+                  <h3 className="text-lg font-semibold text-edwizer-blue">{member.name}</h3>
+                  <p className="text-edwizer-teal text-sm mb-2">{member.role}</p>
+                  <p className="text-gray-600 text-sm">{member.bio}</p>
                 </CardContent>
               </Card>
-
-              <Card className="border-edwizer-green/20 hover:border-edwizer-green/50 transition-all duration-300 shadow-md hover:shadow-lg">
-                <CardHeader className="pb-2">
-                  <Award className="h-12 w-12 text-edwizer-teal mb-2" />
-                  <CardTitle>Quality Education</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    We partner with over 120+ top-tier educational institutions to ensure our students have access to quality learning opportunities.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-edwizer-green/20 hover:border-edwizer-green/50 transition-all duration-300 shadow-md hover:shadow-lg">
-                <CardHeader className="pb-2">
-                  <Brain className="h-12 w-12 text-edwizer-orange mb-2" />
-                  <CardTitle>Holistic Development</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    Beyond academics, we focus on developing life skills, emotional intelligence, and mental wellbeing for overall growth.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
 
-        {/* Team Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">Our Expert Team</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Meet the dedicated professionals behind Edwizer who bring decades of combined experience in education, career counseling, and student mentorship.
+        <div className="bg-gradient-to-r from-edwizer-blue/10 to-edwizer-green/10 p-8 rounded-lg shadow-md mb-12">
+          <h2 className="text-2xl font-bold text-edwizer-blue mb-6 text-center">Why Choose Edwizer?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <BookOpen className="h-6 w-6 text-edwizer-orange mr-2" />
+                <h3 className="text-lg font-semibold text-edwizer-blue">Comprehensive Support</h3>
+              </div>
+              <p className="text-gray-600">
+                End-to-end guidance covering every aspect of education and career development, 
+                from counseling to skill building.
               </p>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Team profiles would go here */}
-              <div className="text-center p-6 border border-edwizer-light rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Team Member" className="w-32 h-32 mx-auto rounded-full object-cover mb-4" />
-                <h3 className="text-xl font-semibold text-edwizer-blue">Dr. Anjali Sharma</h3>
-                <p className="text-edwizer-teal font-medium mb-2">Founder & Chief Counselor</p>
-                <p className="text-gray-600 text-sm">
-                  With 15+ years in educational psychology, Dr. Sharma has guided thousands of students toward their ideal career paths.
-                </p>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <Users className="h-6 w-6 text-edwizer-orange mr-2" />
+                <h3 className="text-lg font-semibold text-edwizer-blue">Expert Team</h3>
               </div>
-              
-              <div className="text-center p-6 border border-edwizer-light rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Team Member" className="w-32 h-32 mx-auto rounded-full object-cover mb-4" />
-                <h3 className="text-xl font-semibold text-edwizer-blue">Prof. Rajiv Kumar</h3>
-                <p className="text-edwizer-teal font-medium mb-2">Academic Director</p>
-                <p className="text-gray-600 text-sm">
-                  Former university dean with extensive knowledge of admission processes and academic requirements across disciplines.
-                </p>
-              </div>
-              
-              <div className="text-center p-6 border border-edwizer-light rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Team Member" className="w-32 h-32 mx-auto rounded-full object-cover mb-4" />
-                <h3 className="text-xl font-semibold text-edwizer-blue">Neha Patel</h3>
-                <p className="text-edwizer-teal font-medium mb-2">Career Strategist</p>
-                <p className="text-gray-600 text-sm">
-                  Industry liaison with connections to top employers, helping students bridge the gap between education and employment.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Achievements */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">Our Impact & Achievements</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Since our inception, we've made significant strides in transforming the educational journey for students across India.
+              <p className="text-gray-600">
+                Guidance from qualified professionals with deep experience in education, 
+                career counseling, and student support.
               </p>
             </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center bg-edwizer-blue/10 w-16 h-16 rounded-full mb-4">
-                  <Users className="h-8 w-8 text-edwizer-blue" />
-                </div>
-                <h3 className="text-3xl font-bold text-edwizer-blue">500+</h3>
-                <p className="text-gray-600">Students Guided</p>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <School className="h-6 w-6 text-edwizer-orange mr-2" />
+                <h3 className="text-lg font-semibold text-edwizer-blue">Institutional Network</h3>
               </div>
-              
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center bg-edwizer-teal/10 w-16 h-16 rounded-full mb-4">
-                  <GraduationCap className="h-8 w-8 text-edwizer-teal" />
-                </div>
-                <h3 className="text-3xl font-bold text-edwizer-teal">120+</h3>
-                <p className="text-gray-600">Partner Institutions</p>
-              </div>
-              
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center bg-edwizer-orange/10 w-16 h-16 rounded-full mb-4">
-                  <BookOpen className="h-8 w-8 text-edwizer-orange" />
-                </div>
-                <h3 className="text-3xl font-bold text-edwizer-orange">50+</h3>
-                <p className="text-gray-600">Workshop Sessions</p>
-              </div>
-              
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center bg-edwizer-yellow/10 w-16 h-16 rounded-full mb-4">
-                  <Clock className="h-8 w-8 text-edwizer-yellow" />
-                </div>
-                <h3 className="text-3xl font-bold text-edwizer-yellow">24/7</h3>
-                <p className="text-gray-600">Student Support</p>
-              </div>
+              <p className="text-gray-600">
+                Strong relationships with educational institutions, providing students 
+                with access to diverse opportunities.
+              </p>
             </div>
-
-            <div className="mt-12 p-6 bg-edwizer-light/20 rounded-lg">
-              <p className="text-center text-lg italic text-gray-700">
-                "At Edwizer, we measure our success not by the number of students we enroll, but by the number of lives we transform. Unless we're talking to investors, then it's definitely about the numbers."
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <Briefcase className="h-6 w-6 text-edwizer-orange mr-2" />
+                <h3 className="text-lg font-semibold text-edwizer-blue">Industry Connections</h3>
+              </div>
+              <p className="text-gray-600">
+                Partnerships with employers and industry leaders to bridge the gap 
+                between education and employment.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <Award className="h-6 w-6 text-edwizer-orange mr-2" />
+                <h3 className="text-lg font-semibold text-edwizer-blue">Proven Results</h3>
+              </div>
+              <p className="text-gray-600">
+                Track record of helping students achieve their academic and career goals, 
+                with thousands of success stories.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="flex items-center mb-3">
+                <Heart className="h-6 w-6 text-edwizer-orange mr-2" />
+                <h3 className="text-lg font-semibold text-edwizer-blue">Student-First Approach</h3>
+              </div>
+              <p className="text-gray-600">
+                Personalized guidance that recognizes the unique needs, strengths, 
+                and aspirations of each student.
               </p>
             </div>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+        </div>
+
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">Start Your Journey With Us</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Whether you're choosing a career path, applying to colleges, developing new skills, or facing 
+            academic challenges, Edwizer is here to support you every step of the way. Let us help you 
+            navigate your educational journey and unlock your full potential.
+          </p>
+        </div>
+
+        <WhatsAppConnect serviceType="Educational Guidance" />
+      </div>
+    </PageLayout>
   );
 };
 

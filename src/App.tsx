@@ -11,6 +11,15 @@ import About from "./pages/About";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
+import CareerCounseling from "./pages/CareerCounseling";
+import AdmissionAssistance from "./pages/AdmissionAssistance";
+import ScholarshipGuidance from "./pages/ScholarshipGuidance";
+import SkillDevelopment from "./pages/SkillDevelopment";
+import MentalWellbeing from "./pages/MentalWellbeing";
+import ServicesPage from "./pages/ServicesPage";
+import TestimonialsPage from "./pages/TestimonialsPage";
+import ResourcesPage from "./pages/ResourcesPage";
+import PartnerWithUs from "./pages/PartnerWithUs";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -28,6 +37,15 @@ const App: React.FC = () => {
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/career-counseling" element={<CareerCounseling />} />
+            <Route path="/admission-assistance" element={<AdmissionAssistance />} />
+            <Route path="/scholarship-guidance" element={<ScholarshipGuidance />} />
+            <Route path="/skill-development" element={<SkillDevelopment />} />
+            <Route path="/mental-wellbeing" element={<MentalWellbeing />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/partner-with-us" element={<PartnerWithUs />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
