@@ -3,10 +3,12 @@ import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, useTexture, Environment } from '@react-three/drei';
 import * as THREE from 'three';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const GlobeModel = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
+  const isMobile = useIsMobile();
   
   // Earth textures with error handling
   let earthTexture;
@@ -26,11 +28,16 @@ const GlobeModel = () => {
     }
   });
 
+  // Adjust globe size for mobile
+  const globeSize = isMobile ? 1.2 : 1.5;
+  // Reduce particles count for mobile
+  const particleCount = isMobile ? 4 : 8;
+
   return (
     <group ref={groupRef}>
       {/* Earth */}
       <mesh ref={meshRef}>
-        <sphereGeometry args={[1.5, 64, 64]} />
+        <sphereGeometry args={[globeSize, isMobile ? 32 : 64, isMobile ? 32 : 64]} />
         {earthTexture ? (
           <meshStandardMaterial 
             map={earthTexture} 
@@ -46,10 +53,10 @@ const GlobeModel = () => {
         )}
       </mesh>
       
-      {/* Education Icons */}
-      {[...Array(8)].map((_, i) => {
-        const angle = (i / 8) * Math.PI * 2;
-        const radius = 2.5;
+      {/* Education Icons - fewer on mobile */}
+      {[...Array(particleCount)].map((_, i) => {
+        const angle = (i / particleCount) * Math.PI * 2;
+        const radius = isMobile ? 2.0 : 2.5;
         const x = Math.sin(angle) * radius;
         const z = Math.cos(angle) * radius;
         return (
@@ -65,6 +72,7 @@ const GlobeModel = () => {
 
 const Particles = () => {
   const particlesRef = useRef<THREE.Points>(null);
+  const isMobile = useIsMobile();
   
   useFrame(() => {
     if (particlesRef.current) {
@@ -72,14 +80,15 @@ const Particles = () => {
     }
   });
   
-  const particleCount = 300;
+  // Reduce particle count on mobile for better performance
+  const particleCount = isMobile ? 150 : 300;
   const positions = new Float32Array(particleCount * 3);
   
   for (let i = 0; i < particleCount; i++) {
     const i3 = i * 3;
-    positions[i3] = (Math.random() - 0.5) * 10;
-    positions[i3 + 1] = (Math.random() - 0.5) * 10;
-    positions[i3 + 2] = (Math.random() - 0.5) * 10;
+    positions[i3] = (Math.random() - 0.5) * (isMobile ? 8 : 10);
+    positions[i3 + 1] = (Math.random() - 0.5) * (isMobile ? 8 : 10);
+    positions[i3 + 2] = (Math.random() - 0.5) * (isMobile ? 8 : 10);
   }
   
   return (
@@ -93,7 +102,7 @@ const Particles = () => {
         />
       </bufferGeometry>
       <pointsMaterial 
-        size={0.05} 
+        size={isMobile ? 0.04 : 0.05} 
         color="#57C5B6" 
         transparent 
         opacity={0.8} 
@@ -105,14 +114,17 @@ const Particles = () => {
 
 // Define the HeroScene3D as a function component
 const HeroScene3D: React.FC = () => {
+  const isMobile = useIsMobile();
+  
   return (
-    <div className="w-full h-full min-h-[400px]">
+    <div className="w-full h-full">
       <Canvas 
         shadows 
         className="bg-transparent"
-        camera={{ position: [0, 0, 5], fov: 45 }}
+        camera={{ position: [0, 0, isMobile ? 6 : 5], fov: isMobile ? 50 : 45 }}
+        dpr={[1, isMobile ? 1.5 : 2]} // Lower pixel ratio on mobile for better performance
       >
-        <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+        <PerspectiveCamera makeDefault position={[0, 0, isMobile ? 6 : 5]} />
         <ambientLight intensity={0.5} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
         
@@ -124,7 +136,7 @@ const HeroScene3D: React.FC = () => {
           enablePan={false} 
           rotateSpeed={0.5}
           autoRotate
-          autoRotateSpeed={0.5}
+          autoRotateSpeed={isMobile ? 0.3 : 0.5}
         />
         <Environment preset="city" />
       </Canvas>

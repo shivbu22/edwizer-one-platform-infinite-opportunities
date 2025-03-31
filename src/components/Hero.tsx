@@ -1,8 +1,13 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Award, Lightbulb } from 'lucide-react';
 import HeroScene3D from './HeroScene3D';
+import { useIsMobile } from '@/hooks/use-mobile';
+
 const Hero = () => {
+  const isMobile = useIsMobile();
+  
   return <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-hero-pattern text-white relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -36,40 +41,41 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="hidden md:block relative z-10 h-[450px]">
+          {/* 3D Scene - Make visible on both mobile and desktop */}
+          <div className="relative z-10 h-[300px] md:h-[450px]">
             <HeroScene3D />
             
-            {/* Floating cards with absolute positioning */}
-            <div className="absolute -top-6 -left-6 bg-edwizer-orange/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float z-20">
-              <div className="flex items-center space-x-3">
-                <BookOpen className="h-8 w-8 text-white" />
+            {/* Floating cards - Show on both mobile and desktop with responsive positioning */}
+            <div className="absolute -top-6 -left-6 bg-edwizer-orange/90 backdrop-blur p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none">
+              <div className="flex items-center space-x-2 md:space-x-3">
+                <BookOpen className="h-6 w-6 md:h-8 md:w-8 text-white" />
                 <div>
-                  <p className="text-white font-medium">Career Counseling</p>
-                  <p className="text-white/80 text-sm">Find your perfect path</p>
+                  <p className="text-white font-medium text-sm md:text-base">Career Counseling</p>
+                  <p className="text-white/80 text-xs md:text-sm">Find your perfect path</p>
                 </div>
               </div>
             </div>
             
-            <div className="absolute top-1/3 -right-8 bg-edwizer-teal/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float z-20" style={{
+            <div className="absolute top-1/3 -right-4 md:-right-8 bg-edwizer-teal/90 backdrop-blur p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none" style={{
             animationDelay: '1s'
           }}>
-              <div className="flex items-center space-x-3">
-                <Award className="h-8 w-8 text-white" />
+              <div className="flex items-center space-x-2 md:space-x-3">
+                <Award className="h-6 w-6 md:h-8 md:w-8 text-white" />
                 <div>
-                  <p className="text-white font-medium">Admissions</p>
-                  <p className="text-white/80 text-sm">Top institutions support</p>
+                  <p className="text-white font-medium text-sm md:text-base">Admissions</p>
+                  <p className="text-white/80 text-xs md:text-sm">Top institutions support</p>
                 </div>
               </div>
             </div>
             
-            <div className="absolute -bottom-6 left-12 bg-edwizer-yellow/90 backdrop-blur p-4 rounded-lg shadow-lg animate-float z-20" style={{
+            <div className="absolute -bottom-6 left-8 md:left-12 bg-edwizer-yellow/90 backdrop-blur p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none" style={{
             animationDelay: '2s'
           }}>
-              <div className="flex items-center space-x-3">
-                <Lightbulb className="h-8 w-8 text-edwizer-blue" />
+              <div className="flex items-center space-x-2 md:space-x-3">
+                <Lightbulb className="h-6 w-6 md:h-8 md:w-8 text-edwizer-blue" />
                 <div>
-                  <p className="text-edwizer-blue font-medium">Skill Development</p>
-                  <p className="text-edwizer-blue/80 text-sm">Industry-ready training</p>
+                  <p className="text-edwizer-blue font-medium text-sm md:text-base">Skill Development</p>
+                  <p className="text-edwizer-blue/80 text-xs md:text-sm">Industry-ready training</p>
                 </div>
               </div>
             </div>
