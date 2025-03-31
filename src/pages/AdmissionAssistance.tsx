@@ -31,7 +31,7 @@ const AdmissionAssistance = () => {
                 unique story effectively. And let's be honest, most application forms are designed as if 
                 they're testing your ability to decode alien language before you even start college."
               </p>
-              <p className="text-right text-blue-700 font-medium mt-2">— Anjali Mehta, Admissions Specialist</p>
+              <p className="text-right text-blue-700 font-medium mt-2">— Mr. Gangesh Jha, Admissions Specialist</p>
             </div>
           </div>
           <div className="relative order-1 lg:order-2">
@@ -127,43 +127,7 @@ const AdmissionAssistance = () => {
             </CardContent>
           </Card>
         </div>
-        
-        <div className="bg-gray-50 p-8 rounded-lg shadow-md mb-12">
-          <h2 className="text-2xl font-bold text-edwizer-blue mb-6 text-center">Institutions We Work With</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white p-4 rounded shadow text-center">
-              <h3 className="text-lg font-semibold text-edwizer-blue mb-2">Engineering</h3>
-              <ul className="text-gray-600 space-y-1">
-                <li>IITs and NITs</li>
-                <li>BITS Pilani</li>
-                <li>VIT Vellore</li>
-                <li>Delhi Technological University</li>
-                <li>Manipal Institute of Technology</li>
-              </ul>
-            </div>
-            <div className="bg-white p-4 rounded shadow text-center">
-              <h3 className="text-lg font-semibold text-edwizer-blue mb-2">Management</h3>
-              <ul className="text-gray-600 space-y-1">
-                <li>IIMs</li>
-                <li>XLRI Jamshedpur</li>
-                <li>SP Jain Institute</li>
-                <li>FMS Delhi</li>
-                <li>NMIMS Mumbai</li>
-              </ul>
-            </div>
-            <div className="bg-white p-4 rounded shadow text-center">
-              <h3 className="text-lg font-semibold text-edwizer-blue mb-2">Medical</h3>
-              <ul className="text-gray-600 space-y-1">
-                <li>AIIMS</li>
-                <li>Christian Medical College</li>
-                <li>JIPMER</li>
-                <li>Kasturba Medical College</li>
-                <li>Maulana Azad Medical College</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
+      
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">Secure Your Admission With Confidence</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
