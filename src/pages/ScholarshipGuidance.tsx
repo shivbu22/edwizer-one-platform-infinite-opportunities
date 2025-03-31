@@ -20,7 +20,7 @@ const ScholarshipGuidance = () => {
               className="rounded-lg shadow-lg w-full h-full object-cover"
             />
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/40 to-transparent rounded-lg flex items-end p-6">
-              <div className="text-white text-xl font-bold">Helped students secure over ₹10 crore in scholarships</div>
+              <div className="text-white text-xl font-bold">Helped students secure over ₹10 Lakh in scholarships</div>
             </div>
           </div>
           <div>
@@ -42,7 +42,7 @@ const ScholarshipGuidance = () => {
                 And yes, sometimes it feels like you need to be a combination of Einstein, Mother Teresa, and Elon Musk 
                 to qualify, but don't worry—we've got tricks up our sleeve."
               </p>
-              <p className="text-right text-green-700 font-medium mt-2">— Vikram Desai, Scholarship Advisor</p>
+              <p className="text-right text-green-700 font-medium mt-2"></p>
             </div>
           </div>
         </div>
