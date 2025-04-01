@@ -81,6 +81,24 @@ const testimonials = [
   }
 ];
 
+// Adding the missing videoTestimonials array
+const videoTestimonials = [
+  {
+    id: 1,
+    name: "Rajat Sharma",
+    role: "Computer Science Graduate",
+    thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
+    description: "Rajat shares his journey of transitioning from a small town to a software engineer at a multinational company with Edwizer's guidance."
+  },
+  {
+    id: 2,
+    name: "Supriya Verma",
+    role: "Medical Student",
+    thumbnail: "https://images.unsplash.com/photo-1564106888482-1d56400d04d1?q=80&w=2074&auto=format&fit=crop",
+    description: "Supriya talks about how Edwizer's NEET preparation resources and mental wellbeing support helped her succeed in her medical entrance exams."
+  }
+];
+
 const statistics = [
   { value: "95%", label: "Student Satisfaction" },
   { value: "85%", label: "Admission Success Rate" },
