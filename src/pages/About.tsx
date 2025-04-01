@@ -4,8 +4,13 @@ import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Award, BookOpen, Users, Map, Heart, Star, School, Briefcase } from 'lucide-react';
 import WhatsAppConnect from '@/components/WhatsAppConnect';
+import FloatingShape3D from '@/components/FloatingShape3D';
+import AnimatedBackground3D from '@/components/AnimatedBackground3D';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const About = () => {
+  const isMobile = useIsMobile();
+  
   const teamMembers = [
     {
       name: "Mr. Deepanshu",
@@ -99,8 +104,25 @@ const About = () => {
           </div>
         </div>
 
+        {/* 3D Background Section */}
+        <div className="relative mb-16">
+          <AnimatedBackground3D 
+            pattern="grid" 
+            color="#159895" 
+            height={isMobile ? "250px" : "350px"} 
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl max-w-4xl text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">Our Mission & Values</h2>
+              <p className="text-gray-700 mb-6">
+                We're dedicated to democratizing access to quality education guidance, 
+                enabling every student to make informed decisions about their academic and career paths.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-6 text-center">Our Mission & Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card className="border-edwizer-green/20 shadow-md">
               <CardContent className="p-6">
@@ -115,8 +137,11 @@ const About = () => {
                 <p className="text-gray-600">
                   We aim to be the bridge that connects students to educational opportunities, 
                   providing them with the tools, resources, and guidance they need to navigate 
-                  The complex landscape of modern education and career development.
+                  the complex landscape of modern education and career development.
                 </p>
+                <div className="mt-4 h-[150px]">
+                  <FloatingShape3D shape="sphere" color="#FFA41B" height="100%" backgroundColor="transparent" />
+                </div>
               </CardContent>
             </Card>
             
@@ -143,6 +168,9 @@ const About = () => {
                     <span><strong>Innovation:</strong> We continuously evolve our approaches to meet changing educational needs.</span>
                   </li>
                 </ul>
+                <div className="mt-4 h-[150px]">
+                  <FloatingShape3D shape="pyramid" color="#159895" height="100%" backgroundColor="transparent" />
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -192,73 +220,83 @@ const About = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-edwizer-blue/10 to-edwizer-green/10 p-8 rounded-lg shadow-md mb-12">
-          <h2 className="text-2xl font-bold text-edwizer-blue mb-6 text-center">Why Choose Edwizer?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-3">
-                <BookOpen className="h-6 w-6 text-edwizer-orange mr-2" />
-                <h3 className="text-lg font-semibold text-edwizer-blue">Comprehensive Support</h3>
+        {/* 3D Background for "Why Choose Edwizer" section */}
+        <div className="relative mb-16">
+          <AnimatedBackground3D 
+            pattern="dots" 
+            color="#57C5B6" 
+            height={isMobile ? "450px" : "350px"} 
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="bg-white/90 backdrop-blur-sm p-6 rounded-xl w-full max-w-6xl">
+              <h2 className="text-2xl font-bold text-edwizer-blue mb-6 text-center">Why Choose Edwizer?</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <BookOpen className="h-6 w-6 text-edwizer-orange mr-2" />
+                    <h3 className="text-lg font-semibold text-edwizer-blue">Comprehensive Support</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    End-to-end guidance covering every aspect of education and career development, 
+                    from counseling to skill building.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <Users className="h-6 w-6 text-edwizer-orange mr-2" />
+                    <h3 className="text-lg font-semibold text-edwizer-blue">Expert Team</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    Guidance from qualified professionals with deep experience in education, 
+                    career counseling, and student support.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <School className="h-6 w-6 text-edwizer-orange mr-2" />
+                    <h3 className="text-lg font-semibold text-edwizer-blue">Institutional Network</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    Strong relationships with educational institutions, providing students 
+                    with access to diverse opportunities.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <Briefcase className="h-6 w-6 text-edwizer-orange mr-2" />
+                    <h3 className="text-lg font-semibold text-edwizer-blue">Industry Connections</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    Partnerships with employers and industry leaders to bridge the gap 
+                    between education and employment.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <Award className="h-6 w-6 text-edwizer-orange mr-2" />
+                    <h3 className="text-lg font-semibold text-edwizer-blue">Proven Results</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    Track record of helping students achieve their academic and career goals, 
+                    with thousands of success stories.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm">
+                  <div className="flex items-center mb-3">
+                    <Heart className="h-6 w-6 text-edwizer-orange mr-2" />
+                    <h3 className="text-lg font-semibold text-edwizer-blue">Student-First Approach</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    Personalized guidance that recognizes the unique needs, strengths, 
+                    and aspirations of each student.
+                  </p>
+                </div>
               </div>
-              <p className="text-gray-600">
-                End-to-end guidance covering every aspect of education and career development, 
-                from counseling to skill building.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-3">
-                <Users className="h-6 w-6 text-edwizer-orange mr-2" />
-                <h3 className="text-lg font-semibold text-edwizer-blue">Expert Team</h3>
-              </div>
-              <p className="text-gray-600">
-                Guidance from qualified professionals with deep experience in education, 
-                career counseling, and student support.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-3">
-                <School className="h-6 w-6 text-edwizer-orange mr-2" />
-                <h3 className="text-lg font-semibold text-edwizer-blue">Institutional Network</h3>
-              </div>
-              <p className="text-gray-600">
-                Strong relationships with educational institutions, providing students 
-                with access to diverse opportunities.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-3">
-                <Briefcase className="h-6 w-6 text-edwizer-orange mr-2" />
-                <h3 className="text-lg font-semibold text-edwizer-blue">Industry Connections</h3>
-              </div>
-              <p className="text-gray-600">
-                Partnerships with employers and industry leaders to bridge the gap 
-                between education and employment.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-3">
-                <Award className="h-6 w-6 text-edwizer-orange mr-2" />
-                <h3 className="text-lg font-semibold text-edwizer-blue">Proven Results</h3>
-              </div>
-              <p className="text-gray-600">
-                Track record of helping students achieve their academic and career goals, 
-                with thousands of success stories.
-              </p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-center mb-3">
-                <Heart className="h-6 w-6 text-edwizer-orange mr-2" />
-                <h3 className="text-lg font-semibold text-edwizer-blue">Student-First Approach</h3>
-              </div>
-              <p className="text-gray-600">
-                Personalized guidance that recognizes the unique needs, strengths, 
-                and aspirations of each student.
-              </p>
             </div>
           </div>
         </div>

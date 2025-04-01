@@ -1,7 +1,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, useTexture, Environment, Text, Float, Stars } from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera, Text, useTexture, Environment, Float, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 import { useIsMobile } from '@/hooks/use-mobile';
 

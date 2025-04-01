@@ -4,11 +4,24 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Award, Lightbulb } from 'lucide-react';
 import HeroScene3D from './HeroScene3D';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   
-  return <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-hero-pattern text-white relative overflow-hidden">
+  const scrollToContact = () => {
+    const contactElement = document.getElementById('contact');
+    if (contactElement) {
+      contactElement.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // If contact section is not on current page, navigate to home page's contact section
+      navigate('/#contact');
+    }
+  };
+  
+  return (
+    <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-hero-pattern text-white relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 z-10">
@@ -22,15 +35,16 @@ const Hero = () => {
               Expert guidance for every step of your academic and career journey, from choosing the right path to securing admissions and beyond.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button className="bg-white text-edwizer-blue hover:bg-edwizer-yellow hover:text-edwizer-blue"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                > 
+              <Button 
+                className="bg-white text-edwizer-blue hover:bg-edwizer-yellow hover:text-edwizer-blue"
+                onClick={scrollToContact}
+              > 
                 Explore Services <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button
                 variant="outline"
                 className="border-white text-white font-extrabold bg-teal-700 hover:bg-teal-600"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={scrollToContact}
               >
                 Book Consultation
               </Button>
@@ -102,6 +116,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
