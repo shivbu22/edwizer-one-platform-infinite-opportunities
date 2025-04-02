@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Logo from './navigation/Logo';
 import DesktopNavigation from './navigation/DesktopNavigation';
 import MobileMenuToggle from './navigation/MobileMenuToggle';
@@ -7,14 +8,18 @@ import MobileMenu from './navigation/MobileMenu';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
+    const contactElement = document.getElementById('contact');
+    if (contactElement) {
+      contactElement.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+    }
   };
 
   const handleGetStarted = () => {
@@ -22,8 +27,8 @@ const Header: React.FC = () => {
     if (document.getElementById('contact')) {
       scrollToContact();
     } else {
-      // For other pages, redirect to home page contact section
-      window.location.href = '/#contact';
+      // For other pages, navigate to home page contact section
+      navigate('/#contact');
     }
   };
   

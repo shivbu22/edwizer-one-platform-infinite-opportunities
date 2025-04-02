@@ -1,20 +1,29 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EdWizer | One Platform, Infinite Solution |</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <meta name="description" content="EdWizer - Education guidance and counseling platform" />
+    <meta name="author" content="EdWizer" />
 
-    <meta property="og:title" content="Lovable Generated Project" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:title" content="EdWizer - One Platform, Infinite Solution" />
+    <meta property="og:description" content="Education guidance and counseling platform providing career counseling, admission assistance, and more." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:site" content="@edwizer" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <!-- Error handling for early script errors -->
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        console.error('Caught error:', msg, 'at', url, 'line:', line);
+        return false;
+      };
+    </script>
   </head>
 
   <body>
@@ -22,5 +31,13 @@
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Fallback content if JavaScript fails to load -->
+    <noscript>
+      <div style="text-align: center; padding: 2rem;">
+        <h1>JavaScript Required</h1>
+        <p>Please enable JavaScript to use this application.</p>
+      </div>
+    </noscript>
   </body>
 </html>
