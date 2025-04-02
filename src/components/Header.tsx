@@ -34,7 +34,7 @@ const Header: React.FC = () => {
   
   return (
     <header className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
-      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
+      <div className="container mx-auto px-4 py-1 flex justify-between items-center">
         <Logo />
         <DesktopNavigation handleGetStarted={handleGetStarted} />
         <MobileMenuToggle isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
