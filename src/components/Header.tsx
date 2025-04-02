@@ -28,8 +28,8 @@ const Header: React.FC = () => {
   };
   
   return (
-    <header className="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+    <header className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         <Logo />
         <DesktopNavigation handleGetStarted={handleGetStarted} />
         <MobileMenuToggle isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />

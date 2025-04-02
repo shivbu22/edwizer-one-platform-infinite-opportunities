@@ -9,7 +9,7 @@ const Logo: React.FC = () => {
         <img 
           src="/lovable-uploads/70fb3ae3-9d22-4880-8f29-cc1504eb83bb.png" 
           alt="Edwizer Logo" 
-          className="h-14 mr-2"
+          className="h-12 mr-2"
         />
       </Link>
     </div>
