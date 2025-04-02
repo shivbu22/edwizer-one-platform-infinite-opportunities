@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Logo from './navigation/Logo';
 import DesktopNavigation from './navigation/DesktopNavigation';
 import MobileMenuToggle from './navigation/MobileMenuToggle';
@@ -9,6 +9,12 @@ import MobileMenu from './navigation/MobileMenu';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

@@ -14,6 +14,7 @@ const MobileMenuToggle: React.FC<MobileMenuToggleProps> = ({ isMenuOpen, toggleM
         onClick={toggleMenu} 
         className="text-gray-700 hover:text-edwizer-blue" 
         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        type="button"
       >
         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
