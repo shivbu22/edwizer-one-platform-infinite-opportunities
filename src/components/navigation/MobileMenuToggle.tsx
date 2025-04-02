@@ -12,11 +12,11 @@ const MobileMenuToggle: React.FC<MobileMenuToggleProps> = ({ isMenuOpen, toggleM
     <div className="md:hidden">
       <button 
         onClick={toggleMenu} 
-        className="text-gray-700 hover:text-edwizer-blue" 
+        className="text-edwizer-blue hover:text-edwizer-teal p-2" 
         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         type="button"
       >
-        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
       </button>
     </div>
   );
