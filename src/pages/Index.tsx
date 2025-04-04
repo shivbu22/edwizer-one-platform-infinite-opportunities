@@ -10,6 +10,7 @@ import Footer from '@/components/Footer';
 import SarcasmBanner from '@/components/SarcasmBanner';
 import FloatingShape3D from '@/components/FloatingShape3D';
 import AnimatedBackground3D from '@/components/AnimatedBackground3D';
+import TrendingKeywords from '@/components/TrendingKeywords';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
@@ -21,7 +22,32 @@ const Index = () => {
       <SarcasmBanner />
       <main className="flex-grow">
         <Hero />
-        <Services />
+        
+        <div className="container mx-auto px-4 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Main content - 3 columns on desktop */}
+            <div className="md:col-span-3">
+              <Services />
+            </div>
+            
+            {/* Sidebar - 1 column */}
+            <div className="md:col-span-1 space-y-6">
+              <TrendingKeywords />
+              
+              {/* Optional: Additional sidebar content can be added here */}
+              <Card className="border-edwizer-green/20 shadow-sm p-4 bg-edwizer-light/30">
+                <h3 className="font-semibold text-edwizer-blue mb-2">Connect With Us</h3>
+                <p className="text-sm text-gray-600 mb-3">Get personalized education guidance from our experts.</p>
+                <button 
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full bg-edwizer-teal hover:bg-edwizer-blue text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+                >
+                  Book Free Consultation
+                </button>
+              </Card>
+            </div>
+          </div>
+        </div>
         
         {/* 3D Separator */}
         <div className="bg-gray-50 py-12">
