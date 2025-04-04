@@ -12,6 +12,7 @@ import FloatingShape3D from '@/components/FloatingShape3D';
 import AnimatedBackground3D from '@/components/AnimatedBackground3D';
 import TrendingKeywords from '@/components/TrendingKeywords';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Card } from '@/components/ui/card';
 
 const Index = () => {
   const isMobile = useIsMobile();
