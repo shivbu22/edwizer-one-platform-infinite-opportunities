@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { loadScript } from '../utils/scriptLoader';
 
@@ -13,15 +12,37 @@ declare global {
 interface AnalyticsProps {
   gaId?: string;
   fbPixelId?: string;
+  enabledEnhancedEcommerce?: boolean;
+  gtmId?: string;
 }
 
 const Analytics: React.FC<AnalyticsProps> = ({ 
   gaId = 'G-XXXXXXXXXX', // Replace with your actual measurement ID
-  fbPixelId = '123456789012345' // Replace with your actual Facebook Pixel ID
+  fbPixelId = '123456789012345', // Replace with your actual Facebook Pixel ID
+  enabledEnhancedEcommerce = false,
+  gtmId
 }) => {
   useEffect(() => {
-    // Initialize Google Analytics
-    if (gaId) {
+    // Initialize Google Tag Manager if ID is provided
+    if (gtmId) {
+      window.dataLayer = window.dataLayer || [];
+      
+      loadScript(`https://www.googletagmanager.com/gtm.js?id=${gtmId}`, {
+        async: true,
+        id: 'gtm-script',
+        onLoad: () => {
+          window.dataLayer.push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+          });
+          console.log('Google Tag Manager initialized');
+        }
+      }).catch(error => {
+        console.error('Failed to load Google Tag Manager:', error);
+      });
+    } 
+    // Otherwise initialize Google Analytics directly
+    else if (gaId) {
       window.dataLayer = window.dataLayer || [];
       
       function gtag(...args: any[]) {
@@ -41,8 +62,14 @@ const Analytics: React.FC<AnalyticsProps> = ({
           gtag('config', gaId, {
             page_path: window.location.pathname,
             anonymize_ip: true,
-            cookie_flags: 'SameSite=None;Secure'
+            cookie_flags: 'SameSite=None;Secure',
+            send_page_view: true
           });
+          
+          // Enable enhanced ecommerce if requested
+          if (enabledEnhancedEcommerce) {
+            gtag('require', 'ecommerce');
+          }
           
           console.log('Google Analytics initialized');
         }
@@ -98,7 +125,7 @@ const Analytics: React.FC<AnalyticsProps> = ({
     return () => {
       window.removeEventListener('popstate', handleRouteChange);
     };
-  }, [gaId, fbPixelId]);
+  }, [gaId, fbPixelId, enabledEnhancedEcommerce, gtmId]);
 
   return null;
 };

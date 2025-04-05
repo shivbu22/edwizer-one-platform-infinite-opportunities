@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from 'react';
+
+import React, { Suspense, lazy, useEffect } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,6 +9,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import Fallback from "./components/Fallback";
 import { HelmetProvider } from 'react-helmet-async';
 import Analytics from '@/components/Analytics';
+import { consolidateInlineStyles } from '@/utils/cssOptimization';
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -32,19 +34,102 @@ const queryClient = new QueryClient({
     queries: {
       retry: 1,
       refetchOnWindowFocus: false,
+      staleTime: 60000, // 1 minute
     },
   },
 });
 
+// Performance monitoring function
+const reportWebVitals = (metric: any) => {
+  // Send to Google Analytics if available
+  if (window.gtag) {
+    window.gtag('event', 'web_vitals', {
+      event_category: 'Web Vitals',
+      event_action: metric.name,
+      event_value: Math.round(metric.value),
+      event_label: metric.id,
+      non_interaction: true,
+    });
+  }
+  
+  // Log to console in development
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(metric);
+  }
+};
+
 export default function App() {
+  // Optimize styles once when the app loads
+  useEffect(() => {
+    // Consolidate inline styles
+    consolidateInlineStyles();
+    
+    // Remove unnecessary styles
+    const styleSheets = document.styleSheets;
+    for (let i = 0; i < styleSheets.length; i++) {
+      try {
+        const sheet = styleSheets[i] as CSSStyleSheet;
+        if (!sheet.href || sheet.href.includes('localhost')) {
+          // Only optimize local stylesheets, not external ones
+          optimizeStylesheet(sheet);
+        }
+      } catch (error) {
+        console.error('Error optimizing stylesheet:', error);
+      }
+    }
+    
+    // Performance monitoring
+    if ('performance' in window && 'getEntriesByType' in performance) {
+      requestAnimationFrame(() => {
+        const navEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+        if (navEntry) {
+          reportWebVitals({
+            name: 'FCP',
+            value: navEntry.domContentLoadedEventEnd - navEntry.fetchStart,
+            id: 'fcp-' + Date.now(),
+          });
+        }
+      });
+    }
+  }, []);
+  
+  // Remove unused CSS rules
+  const optimizeStylesheet = (stylesheet: CSSStyleSheet): void => {
+    try {
+      const rules = stylesheet.cssRules;
+      for (let i = rules.length - 1; i >= 0; i--) {
+        const rule = rules[i];
+        if (rule.type === CSSRule.STYLE_RULE) {
+          const selector = (rule as CSSStyleRule).selectorText;
+          try {
+            // Skip if selector uses pseudo-classes or is essential
+            if (selector.includes(':') || 
+                selector.includes('html') || 
+                selector.includes('body') ||
+                selector.includes('*')) {
+              continue;
+            }
+            
+            // Check if any elements match this selector
+            if (selector && !document.querySelector(selector)) {
+              stylesheet.deleteRule(i);
+            }
+          } catch (e) {
+            // Invalid selector, skip
+          }
+        }
+      }
+    } catch (error) {
+      // Cross-origin stylesheet, skip
+    }
+  };
+  
   return (
     <HelmetProvider>
-      <Analytics />
+      <Analytics gaId="G-XXXXXXXXXX" fbPixelId="123456789012345" />
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
-            <Toaster />
-            <Sonner />
             <HashRouter>
               <Suspense fallback={<Fallback />}>
                 <Routes>
@@ -67,6 +152,8 @@ export default function App() {
                 </Routes>
               </Suspense>
             </HashRouter>
+            <Toaster />
+            <Sonner />
           </TooltipProvider>
         </QueryClientProvider>
       </ErrorBoundary>
