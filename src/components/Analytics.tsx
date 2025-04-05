@@ -53,19 +53,32 @@ const Analytics: React.FC<AnalyticsProps> = ({
     
     // Initialize Facebook Pixel
     if (fbPixelId) {
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window as any, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      // Define fbq if it doesn't exist
+      if (!window.fbq) {
+        window.fbq = function() {
+          // @ts-ignore - Handle argument passing
+          (window.fbq.q = window.fbq.q || []).push(arguments);
+        };
+      }
       
-      window.fbq('init', fbPixelId);
-      window.fbq('track', 'PageView');
+      // Initialize Facebook Pixel code
+      window._fbq = window._fbq || window.fbq;
+      window.fbq.push = window.fbq;
+      window.fbq.loaded = true;
+      window.fbq.version = '2.0';
+      window.fbq.queue = [];
       
-      console.log('Facebook Pixel initialized');
+      loadScript('https://connect.facebook.net/en_US/fbevents.js', {
+        async: true,
+        id: 'fb-pixel-script',
+        onLoad: () => {
+          window.fbq('init', fbPixelId);
+          window.fbq('track', 'PageView');
+          console.log('Facebook Pixel initialized');
+        }
+      }).catch(error => {
+        console.error('Failed to load Facebook Pixel:', error);
+      });
     }
     
     // Track page changes
