@@ -1,4 +1,16 @@
 
+// Define NavigatorConnection interface
+interface NavigatorConnection {
+  saveData: boolean;
+  effectiveType?: string;
+  downlink?: number;
+  rtt?: number;
+}
+
+interface NavigatorWithConnection extends Navigator {
+  connection?: NavigatorConnection;
+}
+
 /**
  * Loads scripts efficiently using modern browser features
  * Optimized for HTTP/2 performance
@@ -26,10 +38,10 @@ export const loadScript = (
     script.defer = defer;
     
     // Add HTTP/2 optimization hints
-    if (navigator.connection && 'saveData' in navigator.connection) {
+    const navigatorWithConnection = navigator as NavigatorWithConnection;
+    if (navigatorWithConnection.connection && 'saveData' in navigatorWithConnection.connection) {
       // Respect data saver mode
-      const connection = navigator.connection as any;
-      if (connection.saveData) {
+      if (navigatorWithConnection.connection.saveData) {
         script.setAttribute('importance', 'low');
       }
     }

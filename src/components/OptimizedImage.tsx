@@ -12,7 +12,7 @@ interface OptimizedImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   loading?: 'lazy' | 'eager';
   priority?: boolean;
   decoding?: 'async' | 'sync' | 'auto';
-  fetchpriority?: 'high' | 'low' | 'auto';
+  fetchPriority?: 'high' | 'low' | 'auto'; // Changed from fetchpriority to fetchPriority (camelCase)
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -26,7 +26,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   loading = 'lazy',
   priority = false,
   decoding = 'async',
-  fetchpriority = 'auto',
+  fetchPriority = 'auto', // Changed from fetchpriority to fetchPriority
   className,
   ...rest
 }) => {
@@ -35,8 +35,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   
   // If image is priority, override loading to eager
   const actualLoading = priority ? 'eager' : loading;
-  // If priority, set fetchpriority to high
-  const actualFetchPriority = priority ? 'high' : fetchpriority;
+  // If priority, set fetchPriority to high
+  const actualFetchPriority = priority ? 'high' : fetchPriority;
   
   useEffect(() => {
     if (priority && src) {
@@ -93,7 +93,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
           height={height}
           loading={actualLoading}
           decoding={decoding}
-          fetchpriority={actualFetchPriority}
+          fetchPriority={actualFetchPriority} // Changed from fetchpriority to fetchPriority
           onLoad={handleLoad}
           onError={handleError}
           className={`w-full h-full object-cover ${!loaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}`}
