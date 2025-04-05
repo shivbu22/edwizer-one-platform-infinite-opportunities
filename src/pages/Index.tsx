@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -13,12 +13,36 @@ import AnimatedBackground3D from '@/components/AnimatedBackground3D';
 import TrendingKeywords from '@/components/TrendingKeywords';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Card } from '@/components/ui/card';
+import { Helmet } from 'react-helmet-async';
+import { setupEmailDeobfuscation } from '@/utils/emailObfuscation';
 
 const Index = () => {
   const isMobile = useIsMobile();
   
+  // Set up email deobfuscation on component mount
+  useEffect(() => {
+    setupEmailDeobfuscation();
+    
+    // Optimize JS execution by deferring non-critical operations
+    const timer = setTimeout(() => {
+      // Load any deferred scripts or operations here
+      console.log('Deferred operations loaded');
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>EdWizer | Education Guidance & Career Counseling in India | Top College Admissions</title>
+        <meta name="description" content="EdWizer provides expert education guidance including career counseling, college admissions assistance for JEE/NEET, scholarship guidance & skill development programs across India." />
+        <meta name="keywords" content="education guidance, career counseling india, college admission help, JEE counseling, NEET guidance, scholarship assistance india" />
+        <link rel="preload" href="/lovable-uploads/35187587-45f7-47c5-9550-7dfde774c29f.png" as="image" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+      </Helmet>
+      
       <Header />
       <SarcasmBanner />
       <main className="flex-grow">
