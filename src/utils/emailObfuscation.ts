@@ -33,7 +33,7 @@ export const setupEmailDeobfuscation = (): void => {
       }
     });
     
-    element.addEventListener('keydown', (e) => {
+    element.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key === 'Enter' || e.key === ' ') {
         const username = element.getAttribute('data-username');
         const domain = element.getAttribute('data-domain');

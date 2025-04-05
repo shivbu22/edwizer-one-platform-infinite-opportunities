@@ -61,17 +61,18 @@ export const optimizeStylesheet = (stylesheet: CSSStyleSheet): void => {
  * Extracts and consolidates inline styles to reduce redundancy
  */
 export const consolidateInlineStyles = (): void => {
-  const inlineStyles: Record<string, string[]> = {};
+  const inlineStyles: Record<string, HTMLElement[]> = {};
   
   // Find elements with inline styles
-  document.querySelectorAll('[style]').forEach(el => {
-    const style = el.getAttribute('style') || '';
+  document.querySelectorAll('[style]').forEach((el) => {
+    const element = el as HTMLElement;
+    const style = element.getAttribute('style') || '';
     
     if (!inlineStyles[style]) {
       inlineStyles[style] = [];
     }
     
-    inlineStyles[style].push(el as HTMLElement);
+    inlineStyles[style].push(element);
   });
   
   // Consolidate styles with multiple occurrences
