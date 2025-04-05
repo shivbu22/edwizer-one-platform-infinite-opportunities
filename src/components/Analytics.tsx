@@ -6,7 +6,7 @@ declare global {
   interface Window {
     dataLayer: any[];
     gtag: (...args: any[]) => void;
-    fbq: (...args: any[]) => void;
+    fbq: any;
   }
 }
 
@@ -53,20 +53,18 @@ const Analytics: React.FC<AnalyticsProps> = ({
     
     // Initialize Facebook Pixel
     if (fbPixelId) {
-      // Define fbq if it doesn't exist
-      if (!window.fbq) {
-        window.fbq = function() {
-          // @ts-ignore - Handle argument passing
-          (window.fbq.q = window.fbq.q || []).push(arguments);
-        };
-      }
+      // Initialize fbq as a function
+      window.fbq = window.fbq || function() {
+        // @ts-ignore - Handle argument passing
+        (window.fbq.q = window.fbq.q || []).push(arguments);
+      };
       
-      // Initialize Facebook Pixel code
-      window._fbq = window._fbq || window.fbq;
-      window.fbq.push = window.fbq;
-      window.fbq.loaded = true;
-      window.fbq.version = '2.0';
-      window.fbq.queue = [];
+      // Set Facebook Pixel properties
+      if (window.fbq) {
+        window.fbq.loaded = true;
+        window.fbq.version = '2.0';
+        window.fbq.q = window.fbq.q || [];
+      }
       
       loadScript('https://connect.facebook.net/en_US/fbevents.js', {
         async: true,
