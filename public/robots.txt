@@ -51,13 +51,17 @@ Disallow: /404
 Disallow: /api/
 Disallow: /admin/
 Disallow: /*.json$
-Disallow: /*?*
+Disallow: /*?*sort=
+Disallow: /*?*filter=
 
 # Sitemap location
 Sitemap: https://edwizer.in/sitemap.xml
 
+# Host directive to prevent duplicate content
+Host: edwizer.in
+
 # Crawl-delay directive (in seconds)
-Crawl-delay: 2
+Crawl-delay: 1
 
 # Page-specific crawl rate for large search engines
 User-agent: Googlebot
