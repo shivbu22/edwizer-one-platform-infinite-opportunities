@@ -90,7 +90,8 @@ export const consolidateInlineStyles = (): void => {
       }
       
       // Add the style rule
-      styleEl.textContent += `.${className} { ${style} }`;
+      const styleElement = styleEl as HTMLStyleElement;
+      styleElement.textContent += `.${className} { ${style} }`;
       
       // Replace inline styles with the class
       elements.forEach(el => {

@@ -15,13 +15,35 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { Card } from '@/components/ui/card';
 import { Helmet } from 'react-helmet-async';
 import { setupEmailDeobfuscation } from '@/utils/emailObfuscation';
+import { consolidateInlineStyles } from '@/utils/cssOptimization';
+import Analytics from '@/components/Analytics';
+import { generateFAQSchema } from '@/utils/seoHelpers';
 
 const Index = () => {
   const isMobile = useIsMobile();
   
-  // Set up email deobfuscation on component mount
   useEffect(() => {
+    // Set up email deobfuscation on component mount
     setupEmailDeobfuscation();
+    
+    // Optimize inline styles
+    consolidateInlineStyles();
+    
+    // Add FAQ schema
+    generateFAQSchema([
+      {
+        question: "What services does EdWizer provide?",
+        answer: "EdWizer provides comprehensive education guidance including career counseling, college admission assistance, scholarship guidance, skill development training, and mental well-being support for students."
+      },
+      {
+        question: "How can EdWizer help with JEE and NEET admissions?",
+        answer: "EdWizer offers specialized counseling for JEE and NEET aspirants, including college selection based on rank, application preparation, document verification, and interview preparation."
+      },
+      {
+        question: "Does EdWizer provide scholarship assistance?",
+        answer: "Yes, EdWizer helps students identify and apply for relevant scholarships, grants, and financial aid opportunities to make quality education more accessible and affordable."
+      }
+    ]);
     
     // Optimize JS execution by deferring non-critical operations
     const timer = setTimeout(() => {
@@ -43,6 +65,7 @@ const Index = () => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </Helmet>
       
+      <Analytics gaId="G-XXXXXXXXXX" fbPixelId="123456789012345" />
       <Header />
       <SarcasmBanner />
       <main className="flex-grow">
