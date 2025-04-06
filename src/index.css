@@ -142,4 +142,30 @@
   .floating-element {
     @apply animate-float;
   }
+  
+  /* New styles inspired by the provided image */
+  .hero-card {
+    @apply bg-[#1e3a8a] text-white p-6 rounded-2xl shadow-xl overflow-hidden relative;
+  }
+  
+  .feature-card {
+    @apply bg-[#1e3a8a]/90 text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .feature-card-purple {
+    @apply bg-[#7e22ce] text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .sign-up-button {
+    @apply bg-[#ec4899] hover:bg-[#db2777] text-white font-medium py-2 px-6 rounded-full transition-colors duration-300;
+  }
+  
+  .floating-icon {
+    @apply absolute animate-float;
+    animation-duration: 6s;
+  }
+  
+  .headline-text {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
 }

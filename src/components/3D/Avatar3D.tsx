@@ -6,7 +6,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const AvatarModel = ({ modelPath = "/models/avatar.glb" }) => {
   const { scene } = useGLTF(modelPath);
-  const modelRef = useRef();
+  const modelRef = useRef<THREE.Group>();
   
   // Simple animation
   useFrame((state) => {
