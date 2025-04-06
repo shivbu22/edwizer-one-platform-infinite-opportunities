@@ -1,4 +1,3 @@
-
 import React, { Suspense, lazy, useEffect } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -10,6 +9,7 @@ import Fallback from "./components/Fallback";
 import { HelmetProvider } from 'react-helmet-async';
 import Analytics from '@/components/Analytics';
 import { consolidateInlineStyles } from '@/utils/cssOptimization';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -154,6 +154,7 @@ export default function App() {
             </HashRouter>
             <Toaster />
             <Sonner />
+            <SpeedInsights />
           </TooltipProvider>
         </QueryClientProvider>
       </ErrorBoundary>
