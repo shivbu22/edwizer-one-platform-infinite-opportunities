@@ -20,6 +20,14 @@ import Analytics from '@/components/Analytics';
 import { generateFAQSchema } from '@/utils/seoHelpers';
 import StructuredData from '@/components/StructuredData';
 
+// Import new components
+import DailyVlogs from '@/components/DailyVlogs';
+import CareerQuiz from '@/components/CareerQuiz';
+import LiveChat from '@/components/LiveChat';
+import WhatsAppConnect from '@/components/WhatsAppConnect';
+import ScholarshipFinder from '@/components/ScholarshipFinder';
+import EventCalendar from '@/components/EventCalendar';
+
 const Index = () => {
   const isMobile = useIsMobile();
   
@@ -71,7 +79,7 @@ const Index = () => {
     return () => clearTimeout(timer);
   }, []);
   
-  // Organization schema data
+  // Schema data for SEO
   const organizationData = {
     name: "EdWizer",
     url: "https://edwizer.in",
@@ -204,7 +212,7 @@ const Index = () => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </Helmet>
       
-      {/* Add multiple structured data elements */}
+      {/* Add structured data elements */}
       <StructuredData type="Organization" data={organizationData} id="organization-schema" />
       <StructuredData type="WebPage" data={webpageData} id="webpage-schema" />
       <StructuredData type="Service" data={serviceData} id="service-schema" />
@@ -227,7 +235,7 @@ const Index = () => {
             <div className="md:col-span-1 space-y-6">
               <TrendingKeywords />
               
-              {/* Optional: Additional sidebar content can be added here */}
+              {/* Book Consultation Card */}
               <Card className="border-edwizer-green/20 shadow-sm p-4 bg-edwizer-light/30">
                 <h3 className="font-semibold text-edwizer-blue mb-2">Connect With Us</h3>
                 <p className="text-sm text-gray-600 mb-3">Get personalized education guidance from our experts.</p>
@@ -241,6 +249,12 @@ const Index = () => {
             </div>
           </div>
         </div>
+        
+        {/* Daily Vlogs Section */}
+        <DailyVlogs />
+        
+        {/* Career Quiz Section */}
+        <CareerQuiz />
         
         {/* 3D Separator */}
         <div className="bg-gray-50 py-12">
@@ -274,6 +288,10 @@ const Index = () => {
           </div>
         </div>
         
+        <ScholarshipFinder />
+        
+        <EventCalendar />
+        
         <CareerAssessment />
         
         {/* Another 3D background section */}
@@ -285,7 +303,7 @@ const Index = () => {
             density={isMobile ? 10 : 20}
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-xl max-w-3xl text-center">
+            <div className="glassmorphism p-6 md:p-8 max-w-3xl text-center">
               <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">
                 Turning Dreams Into Degrees
               </h2>
@@ -295,7 +313,7 @@ const Index = () => {
               </p>
               <button 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-edwizer-teal hover:bg-edwizer-blue text-white font-medium px-6 py-3 rounded-lg transition-colors"
+                className="cta-button"
               >
                 Start Your Journey
               </button>
@@ -307,6 +325,10 @@ const Index = () => {
         <ContactForm />
       </main>
       <Footer />
+      
+      {/* Add Live Chat and WhatsApp Connect components */}
+      <LiveChat />
+      <WhatsAppConnect phoneNumber="919876543210" position="right" />
     </div>
   );
 };

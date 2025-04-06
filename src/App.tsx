@@ -1,3 +1,4 @@
+
 import React, { Suspense, lazy, useEffect } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -11,6 +12,7 @@ import Analytics from '@/components/Analytics';
 import { consolidateInlineStyles } from '@/utils/cssOptimization';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
+import { ThemeProvider } from 'next-themes';
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -127,39 +129,41 @@ export default function App() {
   
   return (
     <HelmetProvider>
-      <Analytics gaId="G-XXXXXXXXXX" fbPixelId="123456789012345" />
-      <ErrorBoundary>
-        <QueryClientProvider client={queryClient}>
-          <TooltipProvider>
-            <HashRouter>
-              <Suspense fallback={<Fallback />}>
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/terms-of-service" element={<TermsOfService />} />
-                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                  <Route path="/cookie-policy" element={<CookiePolicy />} />
-                  <Route path="/career-counseling" element={<CareerCounseling />} />
-                  <Route path="/admission-assistance" element={<AdmissionAssistance />} />
-                  <Route path="/scholarship-guidance" element={<ScholarshipGuidance />} />
-                  <Route path="/skill-development" element={<SkillDevelopment />} />
-                  <Route path="/mental-wellbeing" element={<MentalWellbeing />} />
-                  <Route path="/services" element={<ServicesPage />} />
-                  <Route path="/testimonials" element={<TestimonialsPage />} />
-                  <Route path="/resources" element={<ResourcesPage />} />
-                  <Route path="/partner-with-us" element={<PartnerWithUs />} />
-                  <Route path="/404" element={<NotFound />} />
-                  <Route path="*" element={<Navigate to="/404" replace />} />
-                </Routes>
-              </Suspense>
-            </HashRouter>
-            <Toaster />
-            <Sonner />
-            <SpeedInsights />
-            <VercelAnalytics />
-          </TooltipProvider>
-        </QueryClientProvider>
-      </ErrorBoundary>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <Analytics gaId="G-XXXXXXXXXX" fbPixelId="123456789012345" />
+        <ErrorBoundary>
+          <QueryClientProvider client={queryClient}>
+            <TooltipProvider>
+              <HashRouter>
+                <Suspense fallback={<Fallback />}>
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/terms-of-service" element={<TermsOfService />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="/cookie-policy" element={<CookiePolicy />} />
+                    <Route path="/career-counseling" element={<CareerCounseling />} />
+                    <Route path="/admission-assistance" element={<AdmissionAssistance />} />
+                    <Route path="/scholarship-guidance" element={<ScholarshipGuidance />} />
+                    <Route path="/skill-development" element={<SkillDevelopment />} />
+                    <Route path="/mental-wellbeing" element={<MentalWellbeing />} />
+                    <Route path="/services" element={<ServicesPage />} />
+                    <Route path="/testimonials" element={<TestimonialsPage />} />
+                    <Route path="/resources" element={<ResourcesPage />} />
+                    <Route path="/partner-with-us" element={<PartnerWithUs />} />
+                    <Route path="/404" element={<NotFound />} />
+                    <Route path="*" element={<Navigate to="/404" replace />} />
+                  </Routes>
+                </Suspense>
+              </HashRouter>
+              <Toaster />
+              <Sonner />
+              <SpeedInsights />
+              <VercelAnalytics />
+            </TooltipProvider>
+          </QueryClientProvider>
+        </ErrorBoundary>
+      </ThemeProvider>
     </HelmetProvider>
   );
 }
