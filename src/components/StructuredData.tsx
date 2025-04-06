@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 
 type SchemaType = 
   | 'Article' 
+  | 'Blog'
   | 'Product' 
   | 'FAQPage' 
   | 'LocalBusiness' 
