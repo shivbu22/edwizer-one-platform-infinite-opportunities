@@ -18,6 +18,7 @@ import { setupEmailDeobfuscation } from '@/utils/emailObfuscation';
 import { consolidateInlineStyles } from '@/utils/cssOptimization';
 import Analytics from '@/components/Analytics';
 import { generateFAQSchema } from '@/utils/seoHelpers';
+import StructuredData from '@/components/StructuredData';
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -42,6 +43,22 @@ const Index = () => {
       {
         question: "Does EdWizer provide scholarship assistance?",
         answer: "Yes, EdWizer helps students identify and apply for relevant scholarships, grants, and financial aid opportunities to make quality education more accessible and affordable."
+      },
+      {
+        question: "How can I contact EdWizer for educational guidance?",
+        answer: "You can contact EdWizer through our website contact form, WhatsApp, email at info@edwizer.in, or by calling our helpline number. Our education counselors are available 24/7 to assist you."
+      },
+      {
+        question: "What makes EdWizer different from other education counseling services?",
+        answer: "EdWizer offers a holistic approach with personalized guidance, data-driven recommendations, extensive institutional network, and continuous support throughout your educational journey - not just during admissions."
+      },
+      {
+        question: "Is EdWizer's initial consultation free?",
+        answer: "Yes, EdWizer provides a complimentary initial consultation to understand your educational goals, assess your requirements, and outline potential pathways for your academic success."
+      },
+      {
+        question: "Does EdWizer help with international university admissions?",
+        answer: "Absolutely! EdWizer provides comprehensive support for international admissions, including university selection, application preparation, visa guidance, and scholarship assistance for studying abroad."
       }
     ]);
     
@@ -54,6 +71,128 @@ const Index = () => {
     return () => clearTimeout(timer);
   }, []);
   
+  // Organization schema data
+  const organizationData = {
+    name: "EdWizer",
+    url: "https://edwizer.in",
+    logo: "https://edwizer.in/lovable-uploads/35187587-45f7-47c5-9550-7dfde774c29f.png",
+    sameAs: [
+      "https://www.facebook.com/edwizerindia",
+      "https://twitter.com/edwizer_india",
+      "https://www.linkedin.com/company/edwizer",
+      "https://www.instagram.com/edwizer.india"
+    ],
+    description: "EdWizer provides expert education guidance including career counseling, college admissions assistance for JEE/NEET, scholarship guidance & skill development programs across India.",
+    address: {
+      "@type": "PostalAddress",
+      "addressCountry": "India",
+      "addressRegion": "Delhi",
+      "addressLocality": "New Delhi"
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "telephone": "+91-9876543210",
+      "email": "info@edwizer.in",
+      "availableLanguage": ["English", "Hindi"]
+    }
+  };
+  
+  // WebPage schema data
+  const webpageData = {
+    name: "EdWizer | Education Guidance & Career Counseling in India",
+    description: "EdWizer provides expert education guidance including career counseling, college admissions assistance, scholarship guidance & skill development programs across India.",
+    url: "https://edwizer.in",
+    lastReviewed: "2025-04-05",
+    mainEntity: {
+      "@type": "WebSite",
+      "name": "EdWizer - Education Guidance Portal",
+      "url": "https://edwizer.in"
+    }
+  };
+  
+  // Service schema data 
+  const serviceData = {
+    name: "Education Counseling Services",
+    provider: {
+      "@type": "Organization",
+      "name": "EdWizer"
+    },
+    serviceType: "Education Guidance",
+    areaServed: {
+      "@type": "Country",
+      "name": "India"
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      "name": "Education Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Career Counseling"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "College Admission Assistance"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Scholarship Guidance"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Skill Development"
+          }
+        }
+      ]
+    }
+  };
+  
+  // LocalBusiness schema data
+  const localBusinessData = {
+    name: "EdWizer Education Consultancy",
+    image: "https://edwizer.in/lovable-uploads/35187587-45f7-47c5-9550-7dfde774c29f.png",
+    priceRange: "₹₹",
+    telephone: "+91-9876543210",
+    email: "info@edwizer.in",
+    address: {
+      "@type": "PostalAddress",
+      "addressCountry": "India",
+      "addressRegion": "Delhi",
+      "addressLocality": "New Delhi",
+      "streetAddress": "123 Education Lane"
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      "latitude": "28.6139",
+      "longitude": "77.2090"
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "10:00",
+      "closes": "18:00"
+    }
+  };
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
@@ -64,6 +203,12 @@ const Index = () => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </Helmet>
+      
+      {/* Add multiple structured data elements */}
+      <StructuredData type="Organization" data={organizationData} id="organization-schema" />
+      <StructuredData type="WebPage" data={webpageData} id="webpage-schema" />
+      <StructuredData type="Service" data={serviceData} id="service-schema" />
+      <StructuredData type="LocalBusiness" data={localBusinessData} id="localbusiness-schema" />
       
       <Analytics gaId="G-XXXXXXXXXX" fbPixelId="123456789012345" />
       <Header />

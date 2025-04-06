@@ -13,7 +13,13 @@ type SchemaType =
   | 'Course' 
   | 'Service' 
   | 'WebPage'
-  | 'EducationalOrganization';
+  | 'EducationalOrganization'
+  | 'ItemList'
+  | 'Person'
+  | 'HowTo'
+  | 'ReviewSnippet'
+  | 'CollectionPage'
+  | 'ProfilePage';
 
 interface StructuredDataProps {
   type: SchemaType;

@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import { Clock, User, ArrowRight } from 'lucide-react';
 import TrendingKeywords from '@/components/TrendingKeywords';
+import StructuredData from '@/components/StructuredData';
 
 const blogPosts = [
   {
@@ -64,11 +65,69 @@ const blogPosts = [
 ];
 
 const Blog = () => {
+  // Create blog schema data
+  const blogSchemaData = {
+    "@type": "Blog",
+    "headline": "EdWizer Education Blog",
+    "description": "Expert insights, tips and guidance on education, career planning and skill development",
+    "author": {
+      "@type": "Organization",
+      "name": "EdWizer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "EdWizer",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://edwizer.in/lovable-uploads/35187587-45f7-47c5-9550-7dfde774c29f.png"
+      }
+    },
+    "blogPost": blogPosts.map(post => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "author": {
+        "@type": "Person",
+        "name": post.author
+      },
+      "datePublished": post.date,
+      "mainEntityOfPage": `https://edwizer.in/blog/${post.slug}`,
+      "publisher": {
+        "@type": "Organization",
+        "name": "EdWizer",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://edwizer.in/lovable-uploads/35187587-45f7-47c5-9550-7dfde774c29f.png"
+        }
+      }
+    }))
+  };
+  
+  // Create collection page schema
+  const collectionPageSchema = {
+    "@type": "CollectionPage",
+    "name": "EdWizer Blog Articles",
+    "description": "Collection of educational articles, guides, and resources for students and parents",
+    "url": "https://edwizer.in/blog",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": blogPosts.map((post, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "url": `https://edwizer.in/blog/${post.slug}`
+      }))
+    }
+  };
+  
   return (
     <PageLayout
       title="EdWizer Blog"
       subtitle="Expert insights, tips and guidance on education, career planning and skill development"
     >
+      {/* Add blog structured data */}
+      <StructuredData type="CollectionPage" data={collectionPageSchema} id="collection-page-schema" />
+      <StructuredData type="Blog" data={blogSchemaData} id="blog-schema" />
+      
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main content - blog posts */}

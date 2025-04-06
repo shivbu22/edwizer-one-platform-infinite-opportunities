@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import PageLayout from './PageLayout';
 import { updatePageSEO, generateBreadcrumbSchema } from '../utils/seoHelpers';
 import { loadDeferredStylesheet } from '../utils/cssOptimization';
+import StructuredData from './StructuredData';
 
 interface SEOPageWrapperProps {
   children: React.ReactNode;
@@ -18,6 +19,8 @@ interface SEOPageWrapperProps {
   showBanner?: boolean;
   canonicalUrl?: string;
   structuredData?: object;
+  schemaType?: string;
+  schemaData?: Record<string, any>;
 }
 
 const SEOPageWrapper: React.FC<SEOPageWrapperProps> = ({
@@ -32,7 +35,9 @@ const SEOPageWrapper: React.FC<SEOPageWrapperProps> = ({
   subtitle,
   showBanner = true,
   canonicalUrl,
-  structuredData
+  structuredData,
+  schemaType,
+  schemaData
 }) => {
   // Update SEO meta tags when the component mounts or props change
   useEffect(() => {
@@ -82,13 +87,18 @@ const SEOPageWrapper: React.FC<SEOPageWrapperProps> = ({
         {/* Preload critical assets - moved preconnect to root head */}
         <link rel="preload" href="/lovable-uploads/35187587-45f7-47c5-9550-7dfde774c29f.png" as="image" />
         
-        {/* Add structured data if provided */}
+        {/* Add structured data if provided the old way */}
         {structuredData && (
           <script type="application/ld+json">
             {JSON.stringify(structuredData)}
           </script>
         )}
       </Helmet>
+      
+      {/* Add structured data with the new component if schemaType and schemaData are provided */}
+      {schemaType && schemaData && (
+        <StructuredData type={schemaType as any} data={schemaData} />
+      )}
       
       <PageLayout 
         title={showPageTitle ? optimizedTitle.split('|')[0].trim() : ''} 

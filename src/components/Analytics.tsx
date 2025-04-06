@@ -45,6 +45,7 @@ const Analytics: React.FC<AnalyticsProps> = ({
     else if (gaId) {
       window.dataLayer = window.dataLayer || [];
       
+      // Define gtag function
       function gtag(...args: any[]) {
         window.dataLayer.push(arguments);
       }
@@ -58,8 +59,8 @@ const Analytics: React.FC<AnalyticsProps> = ({
         id: 'ga-script',
         onLoad: () => {
           // Configure analytics with your measurement ID
-          gtag('js', new Date());
-          gtag('config', gaId, {
+          window.gtag('js', new Date());
+          window.gtag('config', gaId, {
             page_path: window.location.pathname,
             anonymize_ip: true,
             cookie_flags: 'SameSite=None;Secure',
@@ -68,7 +69,7 @@ const Analytics: React.FC<AnalyticsProps> = ({
           
           // Enable enhanced ecommerce if requested
           if (enabledEnhancedEcommerce) {
-            gtag('require', 'ecommerce');
+            window.gtag('require', 'ecommerce');
           }
           
           console.log('Google Analytics initialized');
@@ -80,18 +81,27 @@ const Analytics: React.FC<AnalyticsProps> = ({
     
     // Initialize Facebook Pixel
     if (fbPixelId) {
-      // Initialize fbq as a function
-      window.fbq = window.fbq || function() {
-        // @ts-ignore - Handle argument passing
-        (window.fbq.q = window.fbq.q || []).push(arguments);
+      // Initialize fbq function and set up properties
+      window.fbq = function() {
+        if (window.fbq.callMethod) {
+          window.fbq.callMethod.apply(window.fbq, arguments);
+        } else {
+          window.fbq.queue.push(arguments);
+        }
       };
       
-      // Set Facebook Pixel properties
-      if (window.fbq) {
-        window.fbq.loaded = true;
-        window.fbq.version = '2.0';
-        window.fbq.q = window.fbq.q || [];
+      if (!window.fbq.callMethod) {
+        window.fbq.callMethod = window.fbq;
       }
+      
+      if (!window.fbq.queue) {
+        window.fbq.queue = [];
+      }
+      
+      window.fbq.push = window.fbq;
+      window.fbq.loaded = true;
+      window.fbq.version = '2.0';
+      window.fbq.queue = [];
       
       loadScript('https://connect.facebook.net/en_US/fbevents.js', {
         async: true,
@@ -127,7 +137,35 @@ const Analytics: React.FC<AnalyticsProps> = ({
     };
   }, [gaId, fbPixelId, enabledEnhancedEcommerce, gtmId]);
 
-  return null;
+  return (
+    <>
+      {/* Add Google Tag Manager noscript fallback */}
+      {gtmId && (
+        <noscript>
+          <iframe 
+            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+            title="GTM"
+          />
+        </noscript>
+      )}
+      
+      {/* Add Facebook Pixel noscript fallback */}
+      {fbPixelId && (
+        <noscript>
+          <img 
+            height="1" 
+            width="1" 
+            style={{ display: 'none' }} 
+            src={`https://www.facebook.com/tr?id=${fbPixelId}&ev=PageView&noscript=1`}
+            alt=""
+          />
+        </noscript>
+      )}
+    </>
+  );
 };
 
 export default Analytics;
