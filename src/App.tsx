@@ -10,6 +10,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Analytics from '@/components/Analytics';
 import { consolidateInlineStyles } from '@/utils/cssOptimization';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 
 // Lazy load all pages
 const Index = lazy(() => import("./pages/Index"));
@@ -155,6 +156,7 @@ export default function App() {
             <Toaster />
             <Sonner />
             <SpeedInsights />
+            <VercelAnalytics />
           </TooltipProvider>
         </QueryClientProvider>
       </ErrorBoundary>
