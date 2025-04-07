@@ -2,7 +2,24 @@
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
-import { Terminal, Code, Lightbulb, LineChart, Speech, PenTool, Network, Layers, Database } from 'lucide-react';
+import { 
+  Terminal, 
+  Code, 
+  Lightbulb, 
+  LineChart, 
+  BarChart, 
+  PieChart, 
+  Speech, 
+  PenTool, 
+  Network, 
+  Layers, 
+  Database,
+  Briefcase,
+  Globe,
+  Brain,
+  Laptop,
+  Users
+} from 'lucide-react';
 import WhatsAppConnect from '@/components/WhatsAppConnect';
 
 const SkillDevelopment = () => {
