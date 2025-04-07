@@ -123,7 +123,7 @@
   }
   
   .cta-button {
-    @apply relative overflow-hidden bg-edwizer-hotpink text-white font-semibold py-3 px-8 rounded-full transition-all duration-300;
+    @apply relative overflow-hidden bg-gradient-to-r from-edwizer-blue to-edwizer-teal text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
   }
   
   .cta-button::after {
@@ -145,19 +145,19 @@
   
   /* New styles inspired by the provided image */
   .hero-card {
-    @apply bg-edwizer-deepblue text-white p-6 rounded-2xl shadow-xl overflow-hidden relative;
+    @apply bg-[#1e3a8a] text-white p-6 rounded-2xl shadow-xl overflow-hidden relative;
   }
   
   .feature-card {
-    @apply bg-edwizer-deepblue text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply bg-[#1e3a8a]/90 text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
   }
   
   .feature-card-purple {
-    @apply bg-purple-600 text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply bg-[#7e22ce] text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
   }
   
   .sign-up-button {
-    @apply bg-edwizer-hotpink hover:bg-[#db2777] text-white font-medium py-2 px-6 rounded-full transition-colors duration-300;
+    @apply bg-[#ec4899] hover:bg-[#db2777] text-white font-medium py-2 px-6 rounded-full transition-colors duration-300;
   }
   
   .floating-icon {
@@ -167,17 +167,5 @@
   
   .headline-text {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
-  }
-  
-  /* 3D card styles for feature cards like in the image */
-  .card-3d-feature {
-    @apply relative rounded-3xl shadow-xl overflow-hidden transition-all duration-300;
-    transform-style: preserve-3d;
-    perspective: 1500px;
-  }
-
-  /* Chat bubble style */
-  .chat-bubble {
-    @apply bg-teal-400 rounded-2xl p-3 shadow-md flex items-center justify-center;
   }
 }
