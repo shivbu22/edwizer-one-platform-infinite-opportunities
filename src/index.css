@@ -123,7 +123,7 @@
   }
   
   .cta-button {
-    @apply relative overflow-hidden bg-edwizer-hotpink text-white font-semibold py-3 px-8 rounded-full transition-all duration-300;
+    @apply relative overflow-hidden bg-gradient-to-r from-edwizer-hotpink to-edwizer-purple text-white font-semibold py-3 px-8 rounded-full transition-all duration-300;
   }
   
   .cta-button::after {
@@ -143,21 +143,21 @@
     @apply animate-float;
   }
   
-  /* New styles inspired by the provided image */
+  /* New styles inspired by the 3D cartoon design */
   .hero-card {
-    @apply bg-edwizer-deepblue text-white p-6 rounded-2xl shadow-xl overflow-hidden relative;
+    @apply bg-gradient-to-b from-edwizer-deepblue to-edwizer-blue text-white p-6 rounded-2xl shadow-xl overflow-hidden relative;
   }
   
   .feature-card {
-    @apply bg-edwizer-deepblue text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply bg-gradient-to-b from-edwizer-deepblue/90 to-edwizer-blue/90 text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm border border-white/10;
   }
   
   .feature-card-purple {
-    @apply bg-purple-600 text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply bg-gradient-to-b from-edwizer-purple/90 to-edwizer-hotpink/90 text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm border border-white/10;
   }
   
   .sign-up-button {
-    @apply bg-edwizer-hotpink hover:bg-[#db2777] text-white font-medium py-2 px-6 rounded-full transition-colors duration-300;
+    @apply bg-gradient-to-r from-edwizer-hotpink to-edwizer-purple text-white font-medium py-2 px-6 rounded-full transition-all duration-300;
   }
   
   .floating-icon {
@@ -169,15 +169,38 @@
     @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
   }
   
-  /* 3D card styles for feature cards like in the image */
+  /* 3D card styles for feature cards */
   .card-3d-feature {
-    @apply relative rounded-3xl shadow-xl overflow-hidden transition-all duration-300;
+    @apply relative rounded-3xl shadow-xl overflow-hidden transition-all duration-300 backdrop-blur-sm border border-white/10;
     transform-style: preserve-3d;
     perspective: 1500px;
   }
 
   /* Chat bubble style */
   .chat-bubble {
-    @apply bg-teal-400 rounded-2xl p-3 shadow-md flex items-center justify-center;
+    @apply bg-teal-400/80 backdrop-blur-sm rounded-2xl p-3 shadow-md flex items-center justify-center border border-white/20;
+  }
+  
+  /* 3D Button style */
+  .button-3d {
+    @apply relative bg-gradient-to-r from-edwizer-hotpink to-edwizer-purple text-white font-semibold px-8 py-3 rounded-full shadow-lg;
+    transform-style: preserve-3d;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .button-3d:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .button-3d:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Modern glassmorphism cards */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg overflow-hidden;
   }
 }
+
