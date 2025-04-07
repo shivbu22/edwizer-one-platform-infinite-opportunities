@@ -13,8 +13,8 @@ const DesktopNavigation: React.FC<Props> = ({ handleGetStarted }) => {
         to="/services"
         className={({ isActive }) =>
           isActive
-            ? 'text-edwizer-yellow font-medium'
-            : 'text-white hover:text-edwizer-yellow transition-colors'
+            ? 'text-white font-medium'
+            : 'text-white/90 hover:text-white transition-colors'
         }
       >
         Services
@@ -23,8 +23,8 @@ const DesktopNavigation: React.FC<Props> = ({ handleGetStarted }) => {
         to="/blog"
         className={({ isActive }) =>
           isActive
-            ? 'text-edwizer-yellow font-medium'
-            : 'text-white hover:text-edwizer-yellow transition-colors'
+            ? 'text-white font-medium'
+            : 'text-white/90 hover:text-white transition-colors'
         }
       >
         Blog
@@ -33,8 +33,8 @@ const DesktopNavigation: React.FC<Props> = ({ handleGetStarted }) => {
         to="/about"
         className={({ isActive }) =>
           isActive
-            ? 'text-edwizer-yellow font-medium'
-            : 'text-white hover:text-edwizer-yellow transition-colors'
+            ? 'text-white font-medium'
+            : 'text-white/90 hover:text-white transition-colors'
         }
       >
         About
@@ -43,18 +43,12 @@ const DesktopNavigation: React.FC<Props> = ({ handleGetStarted }) => {
         to="/login"
         className={({ isActive }) =>
           isActive
-            ? 'text-edwizer-yellow font-medium'
-            : 'text-white hover:text-edwizer-yellow transition-colors'
+            ? 'text-white font-medium'
+            : 'text-white/90 hover:text-white transition-colors'
         }
       >
         Login
       </NavLink>
-      <button 
-        onClick={handleGetStarted}
-        className="bg-gradient-to-r from-edwizer-hotpink to-edwizer-purple text-white hover:opacity-90 transition-all font-medium px-5 py-2 rounded-full shadow-md"
-      >
-        Get Started
-      </button>
     </nav>
   );
 };
