@@ -10,7 +10,7 @@ export interface WhatsAppConnectProps {
 }
 
 const WhatsAppConnect: React.FC<WhatsAppConnectProps> = ({ 
-  phoneNumber,
+  phoneNumber = "919876543210", // Default phone number for India
   position = 'right',
   serviceType
 }) => {

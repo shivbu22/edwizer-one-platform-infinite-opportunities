@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
@@ -183,7 +182,7 @@ const MentalWellbeing = () => {
           </p>
         </div>
 
-        <WhatsAppConnect serviceType="Mental Wellbeing Support" />
+        <WhatsAppConnect phoneNumber="919876543210" serviceType="Mental Wellbeing Support" />
       </div>
     </PageLayout>
   );

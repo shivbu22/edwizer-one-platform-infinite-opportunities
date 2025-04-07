@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, PerspectiveCamera, Float } from '@react-three/drei';
 import { useIsMobile } from '@/hooks/use-mobile';
+import * as THREE from 'three';
 
 const AvatarModel = ({ modelPath = "/models/avatar.glb" }) => {
   const { scene } = useGLTF(modelPath);

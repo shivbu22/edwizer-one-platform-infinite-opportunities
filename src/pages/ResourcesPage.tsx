@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
@@ -107,7 +106,6 @@ const ResourcesPage = () => {
           </div>
         </div>
         
-       
         <div className="mb-16">
           <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-6 text-center">Resource Categories</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -153,7 +151,7 @@ const ResourcesPage = () => {
           </p>
         </div>
 
-        <WhatsAppConnect serviceType="Educational Resources" />
+        <WhatsAppConnect phoneNumber="919876543210" serviceType="Educational Resources" />
       </div>
     </PageLayout>
   );
