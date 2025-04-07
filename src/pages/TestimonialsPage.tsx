@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
@@ -81,7 +80,6 @@ const testimonials = [
   }
 ];
 
-// Adding the missing videoTestimonials array
 const videoTestimonials = [
   {
     id: 1,
@@ -204,7 +202,7 @@ const TestimonialsPage = () => {
           </p>
         </div>
 
-        <WhatsAppConnect serviceType="Educational Services" />
+        <WhatsAppConnect phoneNumber="919876543210" serviceType="Educational Services" />
       </div>
     </PageLayout>
   );

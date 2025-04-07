@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
@@ -11,7 +10,6 @@ import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover
 const AdmissionAssistance = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   
-  // Open popup after 5 seconds if user hasn't interacted yet
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setIsPopupOpen(true);
@@ -194,9 +192,8 @@ const AdmissionAssistance = () => {
           </p>
         </div>
 
-        <WhatsAppConnect serviceType="Admission Assistance" />
+        <WhatsAppConnect phoneNumber="919876543210" serviceType="Admission Assistance" />
         
-        {/* Admission Contact Popup */}
         <AdmissionContactPopup open={isPopupOpen} onOpenChange={setIsPopupOpen} />
       </div>
     </PageLayout>

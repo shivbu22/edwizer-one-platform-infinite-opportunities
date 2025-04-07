@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
@@ -146,7 +145,6 @@ const ServicesPage = () => {
             </div>
           </div>
           
-          {/* Sidebar with trending keywords */}
           <div className="lg:col-span-1 space-y-6">
             <TrendingKeywords />
             
@@ -165,7 +163,7 @@ const ServicesPage = () => {
           </div>
         </div>
 
-        <WhatsAppConnect serviceType="Educational Services" />
+        <WhatsAppConnect phoneNumber="919876543210" serviceType="Educational Services" />
       </div>
     </PageLayout>
   );
