@@ -72,7 +72,11 @@ export default {
 					yellow: '#F9F871',
 					purple: '#8A2BE2',
 					pink: '#FF69B4',
-					coral: '#FF7F50'
+					coral: '#FF7F50',
+					navyblue: '#1e3a8a',
+					darkblue: '#0F2A5F',
+					deepblue: '#10275F',
+					hotpink: '#ec4899',
 				}
 			},
 			borderRadius: {
