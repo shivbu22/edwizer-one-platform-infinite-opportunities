@@ -39,14 +39,14 @@ const Header: React.FC = () => {
   };
   
   return (
-    <header className="fixed w-full z-50 px-4 md:px-8 py-4">
-      <div className="container mx-auto bg-gradient-to-r from-edwizer-darkblue to-edwizer-blue/90 backdrop-blur-sm rounded-2xl px-6 py-3 flex justify-between items-center shadow-xl">
+    <header className="fixed w-full z-50 px-4 md:px-8 py-3">
+      <div className="container mx-auto bg-edwizer-deepblue/90 backdrop-blur-sm rounded-full px-6 py-3 flex justify-between items-center shadow-xl">
         <Logo />
         <div className="flex items-center gap-2 md:gap-6">
           <DesktopNavigation handleGetStarted={handleGetStarted} />
           <div className="hidden md:block">
             <button
-              className="sign-up-button px-8 shadow-lg"
+              className="sign-up-button px-8"
               onClick={() => navigate('/sign-up')}
             >
               Sign Up
