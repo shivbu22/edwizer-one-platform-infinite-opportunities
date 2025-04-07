@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -328,7 +327,7 @@ const Index = () => {
       
       {/* Add Live Chat and WhatsApp Connect components */}
       <LiveChat />
-      <WhatsAppConnect phoneNumber="919876543210" position="right" />
+      <WhatsAppConnect phoneNumber="919911164696" position="right" />
     </div>
   );
 };

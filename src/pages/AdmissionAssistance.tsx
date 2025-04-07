@@ -192,7 +192,7 @@ const AdmissionAssistance = () => {
           </p>
         </div>
 
-        <WhatsAppConnect phoneNumber="919876543210" serviceType="Admission Assistance" />
+        <WhatsAppConnect phoneNumber="919911164696" serviceType="Admission Assistance" />
         
         <AdmissionContactPopup open={isPopupOpen} onOpenChange={setIsPopupOpen} />
       </div>

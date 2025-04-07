@@ -1,7 +1,7 @@
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, Play } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import WhatsAppConnect from '@/components/WhatsAppConnect';
 
@@ -197,12 +197,12 @@ const TestimonialsPage = () => {
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">Join Our Success Stories</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Ready to transform your educational journey and create your own success story? Connect with our 
-            team of experts and start your path to academic and career excellence.
+            Ready to transform your educational journey? Connect with our experts today and take 
+            the first step toward achieving your academic and career goals.
           </p>
         </div>
 
-        <WhatsAppConnect phoneNumber="919876543210" serviceType="Educational Services" />
+        <WhatsAppConnect phoneNumber="919911164696" serviceType="Educational Services" />
       </div>
     </PageLayout>
   );
