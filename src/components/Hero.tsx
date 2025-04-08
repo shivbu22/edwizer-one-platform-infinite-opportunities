@@ -2,7 +2,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Award, Lightbulb } from 'lucide-react';
-import HeroScene3D from './HeroScene3D';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useNavigate } from 'react-router-dom';
 
@@ -52,41 +51,47 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* 3D Scene - Make visible on both mobile and desktop */}
-          <div className="relative z-10 h-[300px] md:h-[450px]">
-            <HeroScene3D />
-            
-            {/* Floating icons similar to the image */}
-            <div className="absolute -top-6 -left-6 bg-[#FFA41B] p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none">
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <BookOpen className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                <div>
-                  <p className="text-white font-medium text-sm md:text-base">Career Counseling</p>
-                  <p className="text-white/80 text-xs md:text-sm">Find your perfect path</p>
+          {/* Hero Image - Replacing 3D Scene */}
+          <div className="relative z-10 h-[300px] md:h-[450px] flex items-center justify-center">
+            <div className="relative w-full h-full max-w-md mx-auto">
+              <img
+                src="/lovable-uploads/fc3c8f7c-f605-461f-9ac5-42fcca581ac2.png"
+                alt="Education illustration"
+                className="object-contain w-full h-full"
+              />
+              
+              {/* Floating icons similar to the image */}
+              <div className="absolute -top-6 -left-6 bg-[#FFA41B] p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none">
+                <div className="flex items-center space-x-2 md:space-x-3">
+                  <BookOpen className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                  <div>
+                    <p className="text-white font-medium text-sm md:text-base">Career Counseling</p>
+                    <p className="text-white/80 text-xs md:text-sm">Find your perfect path</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="absolute top-1/3 -right-4 md:-right-8 bg-[#57C5B6] p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none" style={{
-            animationDelay: '1s'
-          }}>
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <Award className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                <div>
-                  <p className="text-white font-medium text-sm md:text-base">Admissions</p>
-                  <p className="text-white/80 text-xs md:text-sm">Top institutions support</p>
+              
+              <div className="absolute top-1/3 -right-4 md:-right-8 bg-[#57C5B6] p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none" style={{
+                animationDelay: '1s'
+              }}>
+                <div className="flex items-center space-x-2 md:space-x-3">
+                  <Award className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                  <div>
+                    <p className="text-white font-medium text-sm md:text-base">Admissions</p>
+                    <p className="text-white/80 text-xs md:text-sm">Top institutions support</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="absolute -bottom-6 left-8 md:left-12 bg-[#F9F871] p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none" style={{
-            animationDelay: '2s'
-          }}>
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <Lightbulb className="h-6 w-6 md:h-8 md:w-8 text-[#1e3a8a]" />
-                <div>
-                  <p className="text-[#1e3a8a] font-medium text-sm md:text-base">Skill Development</p>
-                  <p className="text-[#1e3a8a]/80 text-xs md:text-sm">Industry-ready training</p>
+              
+              <div className="absolute -bottom-6 left-8 md:left-12 bg-[#F9F871] p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none" style={{
+                animationDelay: '2s'
+              }}>
+                <div className="flex items-center space-x-2 md:space-x-3">
+                  <Lightbulb className="h-6 w-6 md:h-8 md:w-8 text-[#1e3a8a]" />
+                  <div>
+                    <p className="text-[#1e3a8a] font-medium text-sm md:text-base">Skill Development</p>
+                    <p className="text-[#1e3a8a]/80 text-xs md:text-sm">Industry-ready training</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -166,7 +171,7 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Floating 3D elements */}
+      {/* Floating elements */}
       <div className="absolute top-20 left-10 animate-float" style={{animationDelay: '0.5s'}}>
         <div className="w-8 h-8 bg-[#FFA41B] rounded-full opacity-70"></div>
       </div>

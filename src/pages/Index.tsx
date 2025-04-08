@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -7,8 +8,6 @@ import Testimonials from '@/components/Testimonials';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import SarcasmBanner from '@/components/SarcasmBanner';
-import FloatingShape3D from '@/components/FloatingShape3D';
-import AnimatedBackground3D from '@/components/AnimatedBackground3D';
 import TrendingKeywords from '@/components/TrendingKeywords';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Card } from '@/components/ui/card';
@@ -82,7 +81,7 @@ const Index = () => {
   const organizationData = {
     name: "EdWizer",
     url: "https://edwizer.in",
-    logo: "https://edwizer.in/lovable-uploads/35187587-45f7-47c5-9550-7dfde774c29f.png",
+    logo: "https://edwizer.in/lovable-uploads/d95168b5-39a6-405d-bfa4-b57f4317c49c.png",
     sameAs: [
       "https://www.facebook.com/edwizerindia",
       "https://twitter.com/edwizer_india",
@@ -169,7 +168,7 @@ const Index = () => {
   // LocalBusiness schema data
   const localBusinessData = {
     name: "EdWizer Education Consultancy",
-    image: "https://edwizer.in/lovable-uploads/35187587-45f7-47c5-9550-7dfde774c29f.png",
+    image: "https://edwizer.in/lovable-uploads/d95168b5-39a6-405d-bfa4-b57f4317c49c.png",
     priceRange: "₹₹",
     telephone: "+91-9876543210",
     email: "info@edwizer.in",
@@ -206,7 +205,7 @@ const Index = () => {
         <title>EdWizer | Education Guidance & Career Counseling in India | Top College Admissions</title>
         <meta name="description" content="EdWizer provides expert education guidance including career counseling, college admissions assistance for JEE/NEET, scholarship guidance & skill development programs across India." />
         <meta name="keywords" content="education guidance, career counseling india, college admission help, JEE counseling, NEET guidance, scholarship assistance india" />
-        <link rel="preload" href="/lovable-uploads/35187587-45f7-47c5-9550-7dfde774c29f.png" as="image" />
+        <link rel="preload" href="/lovable-uploads/d95168b5-39a6-405d-bfa4-b57f4317c49c.png" as="image" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </Helmet>
@@ -255,7 +254,7 @@ const Index = () => {
         {/* Career Quiz Section */}
         <CareerQuiz />
         
-        {/* 3D Separator */}
+        {/* Innovative Approach Section - Replacing 3D elements with standard content */}
         <div className="bg-gray-50 py-12">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue text-center mb-8">
@@ -263,21 +262,39 @@ const Index = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <FloatingShape3D shape="cube" color="#1A5F7A" height={isMobile ? "180px" : "220px"} />
+                <div className="h-[180px] md:h-[220px] bg-gradient-to-br from-edwizer-blue to-edwizer-teal flex items-center justify-center">
+                  <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center">
+                    <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                    </svg>
+                  </div>
+                </div>
                 <div className="p-5">
                   <h3 className="font-semibold text-lg text-edwizer-blue mb-2">Personalized Guidance</h3>
                   <p className="text-gray-600">We tailor our approach to your unique needs and goals.</p>
                 </div>
               </div>
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <FloatingShape3D shape="sphere" color="#57C5B6" height={isMobile ? "180px" : "220px"} />
+                <div className="h-[180px] md:h-[220px] bg-gradient-to-br from-edwizer-teal to-edwizer-green flex items-center justify-center">
+                  <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center">
+                    <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                  </div>
+                </div>
                 <div className="p-5">
                   <h3 className="font-semibold text-lg text-edwizer-blue mb-2">Data-Driven Decisions</h3>
                   <p className="text-gray-600">Our recommendations are backed by comprehensive research and analysis.</p>
                 </div>
               </div>
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <FloatingShape3D shape="pyramid" color="#FFA41B" height={isMobile ? "180px" : "220px"} />
+                <div className="h-[180px] md:h-[220px] bg-gradient-to-br from-edwizer-orange to-edwizer-yellow flex items-center justify-center">
+                  <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center">
+                    <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                  </div>
+                </div>
                 <div className="p-5">
                   <h3 className="font-semibold text-lg text-edwizer-blue mb-2">Continuous Support</h3>
                   <p className="text-gray-600">We're with you at every step of your educational journey.</p>
@@ -293,16 +310,16 @@ const Index = () => {
         
         <CareerAssessment />
         
-        {/* Another 3D background section */}
-        <div className="relative">
-          <AnimatedBackground3D 
-            pattern="waves" 
-            color="#F9F871" 
-            height={isMobile ? "200px" : "300px"} 
-            density={isMobile ? 10 : 20}
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="glassmorphism p-6 md:p-8 max-w-3xl text-center">
+        {/* Engagement Section - Replacing 3D background with standard gradient */}
+        <div className="relative bg-gradient-to-r from-edwizer-blue/20 to-edwizer-teal/20 py-16">
+          <div className="absolute inset-0 opacity-10">
+            <div className="h-full w-full" style={{
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg width="20" height="20" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%239C92AC" fill-opacity="0.3" fill-rule="evenodd"%3E%3Ccircle cx="3" cy="3" r="3"/%3E%3Ccircle cx="13" cy="13" r="3"/%3E%3C/g%3E%3C/svg%3E")',
+              backgroundSize: '20px 20px'
+            }}></div>
+          </div>
+          <div className="container mx-auto px-4">
+            <div className="glassmorphism p-6 md:p-8 max-w-3xl mx-auto text-center relative z-10">
               <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">
                 Turning Dreams Into Degrees
               </h2>

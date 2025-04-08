@@ -105,10 +105,6 @@ export default {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.7' }
 				},
-				'rotate-slow': {
-					'0%': { transform: 'rotate(0deg)' },
-					'100%': { transform: 'rotate(360deg)' }
-				},
 				'bounce-subtle': {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-5px)' }
@@ -123,7 +119,6 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'float': 'float 6s ease-in-out infinite',
 				'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
-				'rotate-slow': 'rotate-slow 15s linear infinite',
 				'bounce-subtle': 'bounce-subtle 3s ease-in-out infinite',
 				'scale-in-out': 'scale-in-out 2s ease-in-out infinite'
 			},
