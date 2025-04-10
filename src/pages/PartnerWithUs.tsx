@@ -237,7 +237,7 @@ const PartnerWithUs = () => {
           </p>
         </div>
 
-        <WhatsAppConnect phoneNumber="919911164696" serviceType="Partnership Opportunities" />
+        <WhatsAppConnect serviceType="Partnership Opportunities" />
       </div>
     </PageLayout>
   );

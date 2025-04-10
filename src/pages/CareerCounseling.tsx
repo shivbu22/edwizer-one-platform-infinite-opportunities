@@ -1,3 +1,4 @@
+
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
@@ -129,7 +130,7 @@ const CareerCounseling = () => {
           </Card>
         </div>
         
-        <div className="bg-gradient-to-r from-edwizer-blue/10 to-edwizer-green/10 p-8 rounded-lg shadow-md mb-12">
+        <div className="bg-gradient-to-r from-edwizer-blue/10 to-edwizer-green/10 p-6 rounded-lg shadow-md mb-12">
           <h2 className="text-2xl font-bold text-edwizer-blue mb-4">Our Approach</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="bg-white p-4 rounded shadow">
@@ -163,7 +164,7 @@ const CareerCounseling = () => {
           </p>
         </div>
 
-        <WhatsAppConnect phoneNumber="919911164696" serviceType="Career Counseling" />
+        <WhatsAppConnect serviceType="Career Counseling" />
       </div>
     </PageLayout>
   );
