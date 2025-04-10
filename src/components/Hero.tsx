@@ -1,13 +1,10 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, Award, Lightbulb } from 'lucide-react';
-import HeroScene3D from './HeroScene3D';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
-  const isMobile = useIsMobile();
   const navigate = useNavigate();
   
   const scrollToContact = () => {
@@ -21,99 +18,132 @@ const Hero = () => {
   };
   
   return (
-    <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-hero-pattern text-white relative overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="pt-20 pb-12 md:pt-24 md:pb-16 bg-edwizer-deepblue text-white relative overflow-hidden rounded-3xl mx-4 md:mx-12">
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Main hero content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 z-10">
-            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              <p className="text-white font-medium text-lg">Your 360° Career &amp; Education Companion </p>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Turning <span className="text-edwizer-yellow">aspirations</span> into <span className="text-edwizer-yellow">reality</span>
+          {/* Left column with text */}
+          <div className="space-y-6 z-10 pt-8">
+            <h1 className="headline-text">
+              Empowering <br />
+              Students,<br /> 
+              Shaping <br />
+              Careers
             </h1>
             <p className="text-lg md:text-xl opacity-90">
-              Expert guidance for every step of your academic and career journey, from choosing the right path to securing admissions and beyond.
+              Unlock your future with personalized counseling and resources
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 pt-4">
               <Button 
-                className="bg-white text-edwizer-blue hover:bg-edwizer-yellow hover:text-edwizer-blue"
+                className="cta-button text-lg"
                 onClick={scrollToContact}
               > 
-                Explore Services <ArrowRight className="ml-2 h-4 w-4" />
+                Get Started
               </Button>
-              <Button
-                variant="outline"
-                className="border-white text-white font-extrabold bg-teal-700 hover:bg-teal-600"
-                onClick={scrollToContact}
-              >
-                Book Consultation
-              </Button>
-            </div>
-            
-            <div className="mt-4 py-2 px-3 bg-white/10 backdrop-blur-sm rounded-lg inline-block">
-              <p className="text-edwizer-yellow font-semibold">ONE PLATFORM. INFINITE OPPORTUNITIES</p>
             </div>
           </div>
           
-          {/* 3D Scene - Make visible on both mobile and desktop */}
-          <div className="relative z-10 h-[300px] md:h-[450px]">
-            <HeroScene3D />
-            
-            {/* Floating cards - Show on both mobile and desktop with responsive positioning */}
-            <div className="absolute -top-6 -left-6 bg-edwizer-orange/90 backdrop-blur p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none">
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <BookOpen className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                <div>
-                  <p className="text-white font-medium text-sm md:text-base">Career Counseling</p>
-                  <p className="text-white/80 text-xs md:text-sm">Find your perfect path</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="absolute top-1/3 -right-4 md:-right-8 bg-edwizer-teal/90 backdrop-blur p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none" style={{
-            animationDelay: '1s'
-          }}>
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <Award className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                <div>
-                  <p className="text-white font-medium text-sm md:text-base">Admissions</p>
-                  <p className="text-white/80 text-xs md:text-sm">Top institutions support</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="absolute -bottom-6 left-8 md:left-12 bg-edwizer-yellow/90 backdrop-blur p-3 md:p-4 rounded-lg shadow-lg animate-float z-20 max-w-[150px] md:max-w-none" style={{
-            animationDelay: '2s'
-          }}>
-              <div className="flex items-center space-x-2 md:space-x-3">
-                <Lightbulb className="h-6 w-6 md:h-8 md:w-8 text-edwizer-blue" />
-                <div>
-                  <p className="text-edwizer-blue font-medium text-sm md:text-base">Skill Development</p>
-                  <p className="text-edwizer-blue/80 text-xs md:text-sm">Industry-ready training</p>
-                </div>
-              </div>
+          {/* Right column with 3D illustration */}
+          <div className="relative z-10">
+            <div className="relative pt-8">
+              {/* Counselor and student image */}
+              <img 
+                src="/lovable-uploads/f0749b67-cad6-4d75-b664-62eeee6b1cc0.png" 
+                alt="Education counseling session" 
+                className="w-full h-auto" 
+              />
             </div>
           </div>
         </div>
         
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 bg-white/10 backdrop-blur-sm p-6 rounded-xl">
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">500+</p>
-            <p className="text-white/90 mt-1">Students Guided</p>
+        {/* 3D Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+          {/* Quiz Card */}
+          <div className="card-3d-feature bg-edwizer-deepblue p-6 flex flex-col items-center">
+            <div className="h-48 mb-4 relative flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/f0749b67-cad6-4d75-b664-62eeee6b1cc0.png" 
+                alt="Take the quiz" 
+                className="h-full object-cover"
+                style={{ objectPosition: "0% 25%", objectFit: "cover", clipPath: "inset(32% 0 35% 0)" }}
+              />
+            </div>
+            <h3 className="text-2xl font-bold text-white text-center">Take the<br />Quiz</h3>
           </div>
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">98%</p>
-            <p className="text-white/90 mt-1">Success Rate</p>
+          
+          {/* Daily Vlog Card */}
+          <div className="card-3d-feature bg-edwizer-deepblue p-6 flex flex-col items-center">
+            <div className="h-48 mb-4 relative flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/f0749b67-cad6-4d75-b664-62eeee6b1cc0.png" 
+                alt="Daily vlog" 
+                className="h-full object-cover"
+                style={{ objectPosition: "40% 55%", objectFit: "cover", clipPath: "inset(32% 0 35% 0)" }}
+              />
+            </div>
+            <h3 className="text-2xl font-bold text-white text-center">Daily<br />Vlog</h3>
           </div>
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">120+</p>
-            <p className="text-white/90 mt-1">Partner Institutions</p>
+          
+          {/* Explore Careers Card */}
+          <div className="card-3d-feature bg-purple-600 p-6 flex flex-col items-center">
+            <div className="h-48 mb-4 relative flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/f0749b67-cad6-4d75-b664-62eeee6b1cc0.png" 
+                alt="Explore careers" 
+                className="h-full object-cover"
+                style={{ objectPosition: "80% 55%", objectFit: "cover", clipPath: "inset(32% 0 35% 0)" }}
+              />
+            </div>
+            <h3 className="text-2xl font-bold text-white text-center">Explore<br />Careers</h3>
           </div>
-          <div className="text-center">
-            <p className="text-3xl md:text-4xl font-bold text-edwizer-yellow">24/7</p>
-            <p className="text-white/90 mt-1">Support Available</p>
-          </div>
+        </div>
+
+        {/* Bottom tagline */}
+        <div className="mt-12 text-center">
+          <p className="text-xl font-semibold">Empoweer docares, Sept.</p>
+        </div>
+        
+        {/* Chat icon */}
+        <div className="absolute bottom-6 right-6 bg-yellow-300 rounded-full p-4 shadow-lg">
+          <svg className="w-6 h-6 text-edwizer-darkblue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+          </svg>
+        </div>
+      </div>
+      
+      {/* Floating 3D elements - simplified for this design */}
+      <div className="absolute top-20 left-10 animate-float" style={{animationDelay: '0.5s'}}>
+        <div className="w-20 h-20">
+          <img src="/lovable-uploads/f0749b67-cad6-4d75-b664-62eeee6b1cc0.png" 
+               alt="Saturn" 
+               className="w-full h-full object-cover"
+               style={{ objectPosition: "28% 35%", objectFit: "cover", clipPath: "circle(30% at 30% 35%)" }}
+          />
+        </div>
+      </div>
+      <div className="absolute top-40 right-20 animate-float" style={{animationDelay: '1.5s'}}>
+        <div className="w-10 h-10 rotate-45 bg-yellow-400"></div>
+      </div>
+      <div className="absolute top-1/3 left-1/3 animate-float" style={{animationDelay: '2s'}}>
+        <div className="chat-bubble w-16 h-10">
+          <div className="w-2 h-2 bg-white rounded-full mx-1"></div>
+          <div className="w-2 h-2 bg-white rounded-full mx-1"></div>
+          <div className="w-2 h-2 bg-white rounded-full mx-1"></div>
+        </div>
+      </div>
+      <div className="absolute bottom-1/3 right-1/4 animate-float" style={{animationDelay: '0.7s'}}>
+        <div className="chat-bubble bg-blue-400 w-20 h-12">
+          <div className="w-12 h-1 bg-white rounded-full my-1"></div>
+          <div className="w-12 h-1 bg-white rounded-full my-1"></div>
+        </div>
+      </div>
+      <div className="absolute bottom-20 right-10 animate-float" style={{animationDelay: '2.5s'}}>
+        <div className="w-12 h-16">
+          <img src="/lovable-uploads/f0749b67-cad6-4d75-b664-62eeee6b1cc0.png" 
+               alt="Light bulb" 
+               className="w-full h-full object-cover"
+               style={{ objectPosition: "70% 35%", objectFit: "cover", clipPath: "circle(40% at 80% 35%)" }}
+          />
         </div>
       </div>
     </section>

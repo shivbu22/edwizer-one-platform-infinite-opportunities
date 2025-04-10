@@ -4,6 +4,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
@@ -35,7 +36,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 187 72% 33%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -89,17 +90,94 @@
 @layer base {
   * {
     @apply border-border;
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-foreground font-['Poppins',sans-serif];
+    @apply bg-background text-foreground font-['Montserrat',sans-serif];
   }
 }
 
-.service-card {
-  @apply bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-edwizer-light hover:border-edwizer-green;
-}
+@layer components {
+  .service-card {
+    @apply bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-edwizer-light hover:border-edwizer-green;
+  }
 
-.gradient-text {
-  @apply text-transparent bg-clip-text bg-gradient-to-r from-edwizer-blue to-edwizer-teal;
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-edwizer-blue to-edwizer-teal;
+  }
+  
+  .card-3d {
+    @apply relative bg-white rounded-xl shadow-lg transition-all duration-300 overflow-hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .card-3d:hover {
+    transform: translateY(-5px) rotateX(5deg);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .glassmorphism {
+    @apply bg-white/40 backdrop-blur-md border border-white/20 rounded-xl shadow-lg;
+  }
+  
+  .cta-button {
+    @apply relative overflow-hidden bg-edwizer-hotpink text-white font-semibold py-3 px-8 rounded-full transition-all duration-300;
+  }
+  
+  .cta-button::after {
+    content: '';
+    @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300;
+  }
+  
+  .cta-button:hover::after {
+    @apply opacity-20;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6 text-edwizer-blue;
+  }
+  
+  .floating-element {
+    @apply animate-float;
+  }
+  
+  /* New styles inspired by the provided image */
+  .hero-card {
+    @apply bg-edwizer-deepblue text-white p-6 rounded-2xl shadow-xl overflow-hidden relative;
+  }
+  
+  .feature-card {
+    @apply bg-edwizer-deepblue text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .feature-card-purple {
+    @apply bg-purple-600 text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .sign-up-button {
+    @apply bg-edwizer-hotpink hover:bg-[#db2777] text-white font-medium py-2 px-6 rounded-full transition-colors duration-300;
+  }
+  
+  .floating-icon {
+    @apply absolute animate-float;
+    animation-duration: 6s;
+  }
+  
+  .headline-text {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+  
+  /* 3D card styles for feature cards like in the image */
+  .card-3d-feature {
+    @apply relative rounded-3xl shadow-xl overflow-hidden transition-all duration-300;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+  }
+
+  /* Chat bubble style */
+  .chat-bubble {
+    @apply bg-teal-400 rounded-2xl p-3 shadow-md flex items-center justify-center;
+  }
 }

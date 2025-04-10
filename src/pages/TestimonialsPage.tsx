@@ -1,8 +1,7 @@
-
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, Play } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import WhatsAppConnect from '@/components/WhatsAppConnect';
 
@@ -78,6 +77,23 @@ const testimonials = [
     quote: "Preparing for NEET was challenging, but Edwizer's coaching made it manageable. Their mock tests and personalized feedback significantly improved my performance.",
     rating: 5,
     category: "Coaching Support"
+  }
+];
+
+const videoTestimonials = [
+  {
+    id: 1,
+    name: "Rajat Sharma",
+    role: "Computer Science Graduate",
+    thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
+    description: "Rajat shares his journey of transitioning from a small town to a software engineer at a multinational company with Edwizer's guidance."
+  },
+  {
+    id: 2,
+    name: "Supriya Verma",
+    role: "Medical Student",
+    thumbnail: "https://images.unsplash.com/photo-1564106888482-1d56400d04d1?q=80&w=2074&auto=format&fit=crop",
+    description: "Supriya talks about how Edwizer's NEET preparation resources and mental wellbeing support helped her succeed in her medical entrance exams."
   }
 ];
 
@@ -181,12 +197,12 @@ const TestimonialsPage = () => {
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">Join Our Success Stories</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Ready to transform your educational journey and create your own success story? Connect with our 
-            team of experts and start your path to academic and career excellence.
+            Ready to transform your educational journey? Connect with our experts today and take 
+            the first step toward achieving your academic and career goals.
           </p>
         </div>
 
-        <WhatsAppConnect serviceType="Educational Services" />
+        <WhatsAppConnect phoneNumber="919911164696" serviceType="Educational Services" />
       </div>
     </PageLayout>
   );
