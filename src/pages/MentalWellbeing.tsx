@@ -183,7 +183,7 @@ const MentalWellbeing = () => {
           </p>
         </div>
 
-        <WhatsAppConnect phoneNumber="919911164696" serviceType="Mental Wellbeing Support" />
+        <WhatsAppConnect serviceType="Mental Wellbeing Support" />
       </div>
     </PageLayout>
   );

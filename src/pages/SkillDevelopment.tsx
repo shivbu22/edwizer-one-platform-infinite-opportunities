@@ -2,24 +2,7 @@
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
-import { 
-  Terminal, 
-  Code, 
-  Lightbulb, 
-  LineChart, 
-  BarChart, 
-  PieChart, 
-  Speech, 
-  PenTool, 
-  Network, 
-  Layers, 
-  Database,
-  Briefcase,
-  Globe,
-  Brain,
-  Laptop,
-  Users
-} from 'lucide-react';
+import { Brain, Code, Globe, BarChart, Briefcase, PieChart, Laptop, Users } from 'lucide-react';
 import WhatsAppConnect from '@/components/WhatsAppConnect';
 
 const SkillDevelopment = () => {
@@ -191,15 +174,15 @@ const SkillDevelopment = () => {
         </div>
 
         <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">Elevate Your Career Potential</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-edwizer-blue mb-4">Enhance Your Career Prospects</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Don't let skill gaps limit your career growth. Our comprehensive training programs and 
-            expert guidance can help you develop the skills you need to thrive in today's competitive 
-            job market.
+            Invest in yourself and your future by developing the skills that employers are 
+            actively seeking. Our training programs can help you stand out in a competitive 
+            job market and advance your career.
           </p>
         </div>
 
-        <WhatsAppConnect phoneNumber="919911164696" serviceType="Skill Development" />
+        <WhatsAppConnect serviceType="Skill Development" />
       </div>
     </PageLayout>
   );

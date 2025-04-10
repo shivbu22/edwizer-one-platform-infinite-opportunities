@@ -195,7 +195,7 @@ const ScholarshipGuidance = () => {
           </p>
         </div>
 
-        <WhatsAppConnect phoneNumber="919911164696" serviceType="Scholarship Guidance" />
+        <WhatsAppConnect serviceType="Scholarship Guidance" />
       </div>
     </PageLayout>
   );

@@ -1,23 +1,11 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { FileText, Building, MapPin, ClipboardList, Clock, Search, CheckCircle, Mail } from 'lucide-react';
+import { FileText, Building, MapPin, ClipboardList, Clock, Search, CheckCircle } from 'lucide-react';
 import WhatsAppConnect from '@/components/WhatsAppConnect';
-import AdmissionContactPopup from '@/components/AdmissionContactPopup';
-import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 
 const AdmissionAssistance = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsPopupOpen(true);
-    }, 5000);
-    
-    return () => clearTimeout(timer);
-  }, []);
-  
   return (
     <PageLayout 
       title="Admission Assistance" 
@@ -44,50 +32,6 @@ const AdmissionAssistance = () => {
                 they're testing your ability to decode alien language before you even start college."
               </p>
               <p className="text-right text-blue-700 font-medium mt-2">— Mr. Gangesh Jha, Admissions Specialist</p>
-            </div>
-            
-            <div className="flex flex-wrap gap-4 mt-6">
-              <Button 
-                onClick={() => setIsPopupOpen(true)}
-                className="bg-edwizer-blue hover:bg-edwizer-teal text-white"
-              >
-                Request Admission Consultation
-              </Button>
-              
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline" className="border-edwizer-blue text-edwizer-blue hover:bg-edwizer-light">
-                    <Mail className="mr-2 h-4 w-4" />
-                    Quick Contact
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-80">
-                  <div className="space-y-4">
-                    <h4 className="font-medium text-lg">Contact Our Admission Team</h4>
-                    <p className="text-sm text-gray-500">
-                      Have a quick question? Reach out to our admission counselors directly.
-                    </p>
-                    <div className="space-y-2">
-                      <div className="flex items-center">
-                        <Mail className="h-4 w-4 mr-2 text-edwizer-blue" />
-                        <a href="mailto:admissions@edwizer.in" className="text-sm hover:underline">
-                          admissions@edwizer.in
-                        </a>
-                      </div>
-                      <div className="flex items-center">
-                        <MapPin className="h-4 w-4 mr-2 text-edwizer-blue" />
-                        <span className="text-sm">Delhi, Mumbai, Bangalore, Pune</span>
-                      </div>
-                    </div>
-                    <Button 
-                      onClick={() => setIsPopupOpen(true)} 
-                      className="w-full bg-edwizer-blue hover:bg-edwizer-teal text-white"
-                    >
-                      Schedule a Call
-                    </Button>
-                  </div>
-                </PopoverContent>
-              </Popover>
             </div>
           </div>
           <div className="relative order-1 lg:order-2">
@@ -192,9 +136,7 @@ const AdmissionAssistance = () => {
           </p>
         </div>
 
-        <WhatsAppConnect phoneNumber="919911164696" serviceType="Admission Assistance" />
-        
-        <AdmissionContactPopup open={isPopupOpen} onOpenChange={setIsPopupOpen} />
+        <WhatsAppConnect serviceType="Admission Assistance" />
       </div>
     </PageLayout>
   );
